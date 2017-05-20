@@ -1,4 +1,4 @@
-from models.MongodbConn import MongoPipeline
+from app.models.MongodbConn import MongoPipeline
 
 class BaseClass():
     # class_id,班级;class_num,课程编号
