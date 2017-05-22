@@ -8,6 +8,7 @@ class BaseStudent():
         self.name = self.student_info['name']
         self.student_id = self.student_info['studentid']
         self.class_id = self.student_info['class_num']
+        self.nickname = None
 
 
     def query_basic_info(self,name):
