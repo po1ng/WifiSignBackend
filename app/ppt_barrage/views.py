@@ -1,4 +1,4 @@
-from . import ppt_barrages
+from . import ppt_barrage as ppt_barrage_Blueprint
 import os
 import time
 import json
@@ -13,22 +13,22 @@ UPLOAD_FOLDER = './static/doc'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  # 设置文件上传的目标文件夹
 
 
-@ppt_barrages.route('/')
+@ppt_barrage_Blueprint.route('/')
 def hello_world():
     return 'Hello World!'
 
 
-@ppt_barrages.route('/upload', methods=["GET", "POST"])
+@ppt_barrage_Blueprint.route('/upload', methods=["GET", "POST"])
 def upload_test():
     return render_template("upload.html")
 
 
-@ppt_barrages.route('/show', methods=["GET", "POST"])
+@ppt_barrage_Blueprint.route('/show', methods=["GET", "POST"])
 def show_test():
     return render_template("show.html")
 
 
-@ppt_barrages.route("/api/upload", methods=["GET", "POST"])
+@ppt_barrage_Blueprint.route("/api/upload", methods=["GET", "POST"])
 def upload():
     file = request.files.get("file_data")
     msg = api_upload(app, file)
