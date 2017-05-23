@@ -1,0 +1,49 @@
+body{
+    background-image:url(../picture/home_pen.jpg);
+    overflow:hidden;
+    background-size:cover;
+}
+
+.guide{
+    padding:0;
+    height:20%;
+    background-color:;
+    overflow:;
+}
+
+.scroll{
+    overflow:auto;
+}
+
+.main{
+    background-color:;
+    height:80%;
+}
+
+.choice{
+    position:relative;
+    background-color:;
+    top:5%;
+    height:95%;
+    left:15%;
+    width:70%;
+}
+
+.show{
+    position:relative;
+    background-color:;
+    height:100%;
+    width:100%;
+}
+
+#my_img{}
+
+.function{
+    position:relative;
+    background-color:blue;
+    padding:0;
+    margin:0;
+    top:5%;
+    height:90%;
+    width:100%;
+}

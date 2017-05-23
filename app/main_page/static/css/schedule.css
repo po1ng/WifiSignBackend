@@ -1,0 +1,41 @@
+body{
+    background-image: url(../picture/schedule.jpg);
+    overflow:hidden;
+    background-size:cover;
+}
+
+.mytable{
+    position:relative;
+    width:80%;
+    height:90%;
+    left:10%;
+    top:5%;
+    background-color:;
+}
+
+.day{
+    background-color:;
+    /*border-bottom-style:solid;
+    border-top-style:solid;
+    border-left-style:solid;*/
+    height:100%;
+}
+
+.class{
+    height:50%;
+    /*border-bottom-style:solid;*/
+}
+
+.button{
+    height:100%;
+    width:100%;
+    
+    /*background-color:transparent;
+    border:transparent;*/
+}
+
+.button_no{
+    height:100%;
+    width:100%;
+}
+    
