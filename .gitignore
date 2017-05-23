@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# ppt or pptx,pdf,pic
+*.ppt
+*.pptx
+*.pdf
+*-pic
