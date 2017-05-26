@@ -1,7 +1,8 @@
 from flask_wtf import Form
 from wtforms import SubmitField,StringField,PasswordField,BooleanField
 from wtforms.validators import Required,Length,Email,Regexp,EqualTo
-
+from app.models.BaseUser import User
+from wtforms import ValidationError
 class LoginForm(Form):
     email = StringField('Email',validators=[Required(),Length(1,64),Email()])
     username = StringField('Username',validators=[Required()])
@@ -19,3 +20,11 @@ class RegistrationForm(Form):
                                                     EqualTo('password2','Password must match')])
     password2 = PasswordField('Confirm Password',validators=[Required()])
     submit = SubmitField('Register')
+
+    def validate_email(self,field):
+        if User.objects(email = field.data).first():
+            raise ValidationError('Email already registered.')
+
+    def validate_username(self,field):
+        if User.objects(username = field.data).first():
+            raise ValidationError('Username already in use.')
