@@ -4,15 +4,8 @@ from flask_mongoengine import MongoEngine
 from flask_login import LoginManager
 
 UPLOAD_FOLDER = './static/doc'
-
-
-
 db = MongoEngine()
 login_manager = LoginManager()
-
-@login_manager.user_loader
-def load_user(user_id):
-    return None
 
 
 

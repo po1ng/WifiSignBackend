@@ -5,6 +5,12 @@
     <title></title>
 </head>
 <body>
-    <h1>hello my friend</h1>
+    <h1>{{ get_flashed_messages()[0] }}</h1>
+    <h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
+    {% if current_user.is_authenticated %}
+    <li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
+    {% else %}
+    <li><a href="{{ url_for('auth.login') }}">Sign In</a></li>
+    {% endif %}
 </body>
 </html>

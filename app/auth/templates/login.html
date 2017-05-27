@@ -1,6 +1,7 @@
 {% from "base.html" import render_field %}
 <form method=post action="/auth/login">
     {{ get_flashed_messages()[0] }}
+
   <dl>
 
     {{ form.csrf_token }}
