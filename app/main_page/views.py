@@ -32,4 +32,5 @@ def data():
         dic_all_students[student] = 1
     for student in list_unsign_students:
         dic_all_students[student] = 0
-    return jsonify(dic_all_students = dic_all_students)
+    print(dic_all_students)
+    return jsonify(dic_all_students)

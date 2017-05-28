@@ -7,28 +7,38 @@
 <meta name='viewport' content='width=device-width, initial-scale=1' />
 
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-{#<link href="./css/teacher_home.css" rel="stylesheet">#}
-<link href={{ url_for('main_page.static',filename='css/teacher_home.css') }} rel="stylesheet">
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="./static/css/teacher_home.css" rel="stylesheet">
+
 
 <title>教师主页</title>
 </head>
 
-<body data-spy="scroll" data-target="#myScrollspy">
-<div class="container">
-	<div class="jumbotron">
-        <h1>教师个人主页</h1>
-    </div>
-    <div class="row">
-        <div class="col-xs-3" id="myScrollspy">
-            <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
-                <li class="active"><a href="#section-1">人员名单</a></li>
-                <li><a href="#section-2">到课率折线图</a></li>
-                <li><a href="#section-3">未签到人员名单</a></li>
-                <li><a href="#section-4">更多</a></li>
-            </ul>
-        </div>
-        <div class="col-xs-9">
-            <h2 id="section-1" style='display:inline;'>人员名单</h2>
+<body>
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-md-2 col-sm-2 col-xs-2'>
+                <nav class='navbar navbar-default'>
+                    <div class='navbar-header'>
+                        <button class='navbar-toggle collapsed' data-toggle='collapse' data-target='#sidebar-navbar-collapse'>
+                        <span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>
+                        </button>
+                    </div>
+                    <div class='navbar-collapse collapse' id='sidebar-navbar-collapse'>
+                        <ul class='nav nav-stacked'>
+                            <li><a href='#' class='btn btn-success'><span class='glyphicon glyphicon-home'></span><span class='hidden-sm hidden-xs'>&emsp;主页</span></a></li>
+                            <li><a href='#' class='btn btn-link'><span class='glyphicon glyphicon-picture'></span><span class='hidden-sm hidden-xs'>&emsp;图表</span></a></li>
+                            <li><a href='#' class='btn btn-link'><span class='glyphicon glyphicon-comment'></span><span class='hidden-sm hidden-xs'>&emsp;聊天</span></a></li>
+                            <li><a href='#' class='btn btn-link'><span class='glyphicon glyphicon-cog'></span><span class='hidden-sm hidden-xs'>&emsp;设置</span></a></li>
+                            <li><a href='#' class='btn btn-link'><span class='glyphicon glyphicon-upload'></span><span class='hidden-sm hidden-xs'>&emsp;上传</span></a></li>
+                            <li><a href='#' class='btn btn-link'><span class='glyphicon glyphicon-download'></span><span class='hidden-sm hidden-xs'>&emsp;下载</span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class='col-md-10 col-sm-10 col-xs-10' style='padding:40px;'>
+            <h2 style='display:inline;'><i class='fa  fa-group'></i>&emsp;人员名单</h2>
             <button class='btn btn-default' id='all-refresh'><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
             <div>
                 <table class="table table-striped table-hover">
@@ -51,11 +61,67 @@
                 </table>
             </div>
             <hr />
-            <h2 id="section-2">到课率折线图</h2>
-            <div>
+            <h2><span class='glyphicon glyphicon-picture'></span>&emsp;图表</h2>
+            <div class='row'>
+                <div class='col-md-12 col-sm-12 col-xs-12'>
+                    <div style='width:100%;height:500px' id='chart1'/></div>
+                </div>
+                <div class='col-md-6 col-sm-6 col-xs-12'>
+                    <div class='panel panel-default' style='width:100%;height:300px' id='chart2'>
+                        <div class='panel-heading' style='height:80px;'>
+                            <h3><i class='fa fa-hand-peace-o'></i>&emsp;到课率较高的学生</h3>
+                        </div>
+                        <div class='panel-body' style='height:220px;overflow:auto;'>
+                            <ul class='list-group'>
+                                <li class="list-group-item">
+                                    
+                                </li>
+                                <li class="list-group-item">
+                                    
+                                </li>
+                                <li class="list-group-item">
+                                    
+                                </li>
+                                <li class="list-group-item">
+                                    
+                                </li>
+                                <li class="list-group-item">
+                                    
+                                </li>
+                                <li class="list-group-item">
+                                    
+                                </li>
+                                <li class="list-group-item">
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-md-6 col-sm-6 col-xs-12'>
+                    <div class='panel panel-default' style='width:100%;height:300px' id='chart3'>
+                        <div class='panel-heading' style='height:80px;'>
+                            <h3><span class='glyphicon glyphicon-comment'></span>&emsp;想说的话</h3>
+                        </div>
+                        <div class='panel-body' style='height:220px;overflow:auto;'>
+                            <ul class='list-group'>
+                                <li class="list-group-item"><i class='fa  fa-female'></i>&emsp;老师课讲得不错</li>
+                                <li class="list-group-item"><i class='fa  fa-male'></i>&emsp;老师课讲得不错</li>
+                                <li class="list-group-item"><i class='fa  fa-female'></i>&emsp;老师课讲得不错</li>
+                                <li class="list-group-item"><i class='fa  fa-male'></i>&emsp;老师课讲得不错</li>
+                                <li class="list-group-item"><i class='fa  fa-female'></i>&emsp;老师课讲得不错</li>
+                                <li class="list-group-item"><i class='fa  fa-male'></i>&emsp;老师课讲得不错</li>
+                                <li class="list-group-item"><i class='fa  fa-female'></i>&emsp;老师课讲得不错</li>
+                                <li class="list-group-item"><i class='fa  fa-male'></i>&emsp;老师课讲得不错</li>
+                                <li class="list-group-item"><i class='fa  fa-female'></i>&emsp;老师课讲得不错</li>
+                                <li class="list-group-item"><i class='fa  fa-male'></i>&emsp;老师课讲得不错</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <hr />
-            <h2 id="section-3" style='display:inline;'>未签到人员名单</h2>
+            <h2 style='display:inline;'><i class='fa fa-user-times'></i>&emsp;未签到人员名单</h2>
             <button class='btn btn-default' id='no-refresh'><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
             <div>
                 <table class="table table-striped table-hover">
@@ -69,43 +135,47 @@
                     </tbody>
                 </table>
             </div>
-            <hr />
-            <h2 id="section-4">更多</h2>
-            <div>
             </div>
         </div>
     </div>
-</div>
 
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src='https://cdn.bootcss.com/Chart.js/2.5.0/Chart.js'></script>
+<script src='https://cdn.bootcss.com/highcharts/5.0.12/highcharts.js'></script>
 <script>
+    //对学生名单以及未到学生名单的展示
     var object_js;
     var s=new Array();
-    s.push('success');
-    s.push('danger');
+    s.push('btn-success');
+    s.push('btn-danger');
     var allList=document.getElementById('all-list');
     
-    var object_no={names:null,statuses:null};
+    var object_no;
     var noList=document.getElementById('no-list');
     
+    
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    function check_stu(){
+        $.ajax({
+            url: '/main_page/data', //在这里提填写你的地址
+            async: true,
+            dataType: 'json',
+            success: function (json_obj) {
+                object_js=json_obj;
 
-    function getAllList_js(){
-{#        var object_js={"张三":0,'李四':1,'王五':0};#}
-{#        var object_js = {{ dic_all_students }};#}
-         var object_js = {{ dic_all_students|tojson }};
-{#        object_js = eval("(" + object_js + ")");#}
-        return object_js;
+                showAllList();
+            }  
+        });
     }
     
-    function showAllList_js(){
-        object_js=getAllList_js();
+    
+    function showAllList(){
+
         $('#all-list tr').remove();
         var size=0,key;
         var statuses=new Array();
         var names=new Array();
-        var tds=new Array(10);
         for(key in object_js){
             if(object_js.hasOwnProperty(key)){
                 names.push(key);
@@ -120,10 +190,14 @@
                 if(i>=size){
                     break;
                 }
-                tds[i%10]=document.createElement('td');
-                tds[i%10].innerHTML=names[i];
-                $(tds[i%10]).addClass(s[statuses[i]]);
-                tr.appendChild(tds[i%10]);
+                var td=document.createElement('td');
+                var btn=document.createElement('a');
+                btn.innerHTML=names[i]+"&emsp;<span class='glyphicon glyphicon-user'></span>";
+                $(btn).attr('href','#');
+                $(btn).addClass('btn');
+                $(btn).addClass(s[statuses[i]]);
+                td.appendChild(btn);
+                tr.appendChild(td);
                 i++;
             }while(i%10!=0);
             allList.appendChild(tr);
@@ -131,27 +205,43 @@
     }
     
     
-    showAllList_js();
-    
-    setInterval('showAllList_js()',60000);
-    
-    function getNoList(){
-        var status=['success','danger'];
-        var name=['小明','小王','小李','小明','小王'];
-        var object_no={names:name,statuses:status};
-        return object_no;
+    showAllList()
+
+    /!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    setInterval('check_stu()',2000);//6000是间隔时间  单位为毫秒 6000就是一分钟
+{#    setInterval(function () {#}
+{#        $.get('/main_page/data').done(check_stu());#}
+{#    }, 2000);#}
+
+    function check_stu_no(){
+        $.ajax({
+            url: './returnJSON.php',
+            async: true,
+            dataType: 'json',
+            success: function (json_obj) {
+                object_no=json_obj;
+                showNoList();
+            }  
+        });
     }
     
     function showNoList(){
-        object_no=getNoList();
         $('#no-list tr').remove();
-        var length=object_no.names.length-1;
-        for(var i=0;i<object_no.names.length;i++){
+        var size=0;
+        var names=new Array();
+        for(var key in object_no){
+            if(object_no.hasOwnProperty(key)){
+                names.push(key);
+                size++;
+            }
+        
+        }
+        for(var i=0;i<size;i++){
             var tr=document.createElement('tr');
             var td1=document.createElement('td');
             var td2=document.createElement('td');
             $(tr).addClass('danger');
-            td1.innerHTML=object_no.names[Math.round(Math.random()*length)];
+            td1.innerHTML=names[i];
             td2.innerHTML='未签到';
             tr.appendChild(td1);
             tr.appendChild(td2);
@@ -159,17 +249,107 @@
         }
     }
     
-    showNoList();
-    
-    setInterval('showNoList()',60000);
+    check_stu_no()
+    setInterval('check_stu_no',2000);
     
     var allRefresh=$('#all-refresh');
     var noRefresh=$('#no-refresh');
     allRefresh.click(function(){showAllList();});
     noRefresh.click(function(){showNoList();});
-    setInterval(function () {
-        $.get('/main_page/data').done(showAllList_js());
-        }, 3000);
+    
+    //对三个图表的展示
+    
+    //第一个图
+    var data_avg=new Array();//平均到课率
+    var data_my=new Array();//老师自己的课的到课率
+    
+    function classPercentage_avg(){
+        var json_str='{"1":75,"2":80,"3":85,"4":89}';//这里是需要填写的json数据，格式是 "第几周":到课率
+        var json_obj=JSON.parse(json_str);
+        var data=new Array()
+        for(var i in json_obj){
+            data.push(json_obj[i]);
+        }
+        return data;
+    }
+    
+    function classPercentage_my(){
+        var json_str='{"1":80,"2":85,"3":95,"4":90}';//这里是需要填写的json数据，格式是 "第几周":到课率
+        var json_obj=JSON.parse(json_str);
+        var data=new Array()
+        for(var i in json_obj){
+            data.push(json_obj[i]);
+        }
+        return data;
+    }
+    data_avg=classPercentage_avg();
+    data_my=classPercentage_my();
+    
+    
+    
+    $('#chart1').highcharts({
+        title:{
+            text:"到课率"
+        },
+        xAxis: {
+            title:{
+                text:'周数'
+            },
+            categories: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
+        },
+        yAxis:{
+            title:{
+                text:'到课百分比'
+            }
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{y}%',
+                }
+            }
+        },
+        series: [{
+            name:'平均到课率',
+            data: data_avg
+        },
+        {
+            name:"您的到课率",
+            data:data_my
+        }]
+    });
+    
+    //到课率较高的学生
+    var hrefs=new Array();
+    var names=new Array();
+    var all=new Array();
+    var stus_good=$('#chart2 ul.list-group li.list-group-item');
+    
+    function suggestStu(){
+        var json_str='{"小明":"./1.html","小李":"./2.html","小王":"./3.html","小吴":"./4.html","小赵":"./5.html","小黄":"./6.html","小钱":"./7.html"}';//这里是需要填写的json数据，格式是 "学生姓名":"学生主页的链接"
+        var json_obj=JSON.parse(json_str);
+        var names=new Array();
+        var hrefs=new Array();
+        for(var i in json_obj){
+            names.push(i);
+            hrefs.push(json_obj[i]);
+        }
+        return new Array(names,hrefs);
+    }
+    
+    all=suggestStu();
+    names=all[0];
+    hrefs=all[1];
+    
+    
+    
+    stus_good.html(
+        function(index,obj_j){
+            stus_good.eq(index).html("<a class='btn btn-default' style='width:100%;border-style:none;' href='"+hrefs[index]+"'><span class='glyphicon glyphicon-user pull-left'></span>"+names[index]+"</a>");
+        }
+    );
+            
 </script>
 
 </body>
