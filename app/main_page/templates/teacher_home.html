@@ -90,7 +90,7 @@
     var object_no={names:null,statuses:null};
     var noList=document.getElementById('no-list');
     
-    
+
     function getAllList_js(){
 {#        var object_js={"张三":0,'李四':1,'王五':0};#}
 {#        var object_js = {{ dic_all_students }};#}
@@ -167,7 +167,9 @@
     var noRefresh=$('#no-refresh');
     allRefresh.click(function(){showAllList();});
     noRefresh.click(function(){showNoList();});
-            
+    setInterval(function () {
+        $.get('/main_page/data').done(showAllList_js());
+        }, 3000);
 </script>
 
 </body>
