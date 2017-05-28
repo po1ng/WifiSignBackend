@@ -10,7 +10,7 @@ def main_page():
 
 @main_page_Blueprint.route('/teacher')
 def teacher():
-    Class = BaseClass(21, 5, '2017-05-20')
+    Class = BaseClass(21)
     list_sign_students = Class.list_sign_students
     list_unsign_students = Class.list_unsign_students
     dic_all_students = {}
@@ -23,7 +23,7 @@ def teacher():
 
 @main_page_Blueprint.route('/data')
 def data():
-    Class = BaseClass(21, 5, '2017-05-20')
+    Class = BaseClass(21)
 
     list_sign_students = Class.list_sign_students
     list_unsign_students = Class.list_unsign_students
