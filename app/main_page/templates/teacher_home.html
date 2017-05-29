@@ -8,7 +8,7 @@
 
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="./static/css/teacher_home.css" rel="stylesheet">
+<link href="./css/teacher_home.css" rel="stylesheet">
 
 
 <title>教师主页</title>
@@ -147,8 +147,8 @@
     //对学生名单以及未到学生名单的展示
     var object_js;
     var s=new Array();
-    s.push('btn-success');
     s.push('btn-danger');
+    s.push('btn-success');
     var allList=document.getElementById('all-list');
     
     var object_no;
@@ -158,12 +158,11 @@
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     function check_stu(){
         $.ajax({
-            url: '/main_page/data', //在这里提填写你的地址
+            url: './returnJSON.php', //在这里提填写你的地址
             async: true,
-            dataType: 'json',
-            success: function (json_obj) {
-                object_js=json_obj;
-
+            dataType: 'text',
+            success: function (json_str) {
+                object_js=JSON.parse(json_str);
                 showAllList();
             }  
         });
@@ -171,7 +170,6 @@
     
     
     function showAllList(){
-
         $('#all-list tr').remove();
         var size=0,key;
         var statuses=new Array();
@@ -195,6 +193,7 @@
                 btn.innerHTML=names[i]+"&emsp;<span class='glyphicon glyphicon-user'></span>";
                 $(btn).attr('href','#');
                 $(btn).addClass('btn');
+                $(btn).css('width','100%');
                 $(btn).addClass(s[statuses[i]]);
                 td.appendChild(btn);
                 tr.appendChild(td);
@@ -205,21 +204,20 @@
     }
     
     
-    showAllList()
-
-    /!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    setInterval('check_stu()',2000);//6000是间隔时间  单位为毫秒 6000就是一分钟
-{#    setInterval(function () {#}
-{#        $.get('/main_page/data').done(check_stu());#}
-{#    }, 2000);#}
-
+    check_stu();
+    
+    
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    setInterval('check_stu()',5000);//6000是间隔时间  单位为毫秒 6000就是一分钟
+    
+    
     function check_stu_no(){
         $.ajax({
             url: './returnJSON.php',
             async: true,
-            dataType: 'json',
-            success: function (json_obj) {
-                object_no=json_obj;
+            dataType: 'text',
+            success: function (json_str) {
+                object_no=JSON.parse(json_str);
                 showNoList();
             }  
         });
@@ -250,7 +248,7 @@
     }
     
     check_stu_no()
-    setInterval('check_stu_no',2000);
+    setInterval('check_stu_no()',60000);
     
     var allRefresh=$('#all-refresh');
     var noRefresh=$('#no-refresh');
