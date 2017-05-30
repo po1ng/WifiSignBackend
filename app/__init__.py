@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
-from flask_mongoengine import MongoEngine
+from flask_mongoengine import MongoEngine,MongoEngineSessionInterface
 from flask_login import LoginManager
 
 UPLOAD_FOLDER = './static/doc'
@@ -20,7 +20,9 @@ def create_app():
         'host': '127.0.0.1',
         'port': 27017
     }
+    app.session_interface = MongoEngineSessionInterface(db)
     db.init_app(app)
+
 
     app.secret_key = 's3cr3t'
     login_manager.session_protection = 'strong'

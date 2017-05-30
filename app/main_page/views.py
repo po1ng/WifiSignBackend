@@ -1,14 +1,24 @@
 from app.main_page import main_page as main_page_Blueprint
 from app.models.BaseClass import BaseClass
-from flask import  render_template
+from flask import  render_template,abort
 from flask import jsonify
 from config import CLASS_NUMBER
+from app.models.BaseUser import User
+
 class_number = CLASS_NUMBER
 
 @main_page_Blueprint.route('/')
 def main_page():
     Class = BaseClass(class_number)
     return render_template('index.html',Class=Class)
+
+@main_page_Blueprint.route('/student/<username>')
+def student(username):
+    student = User.objects(username = username).first()
+    if student is None:
+        abort(404)
+    return render_template('student_home.html',student = student)
+
 
 @main_page_Blueprint.route('/teacher')
 def teacher():

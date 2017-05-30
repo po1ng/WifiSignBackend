@@ -2,12 +2,21 @@ from app import db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from app import login_manager
+from datetime import datetime
+from flask import session
 
 class User(UserMixin,db.Document):
     username = db.StringField()
     password_hash = db.StringField()
     email = db.StringField()
+    class_number = db.StringField()
+    nickname = db.StringField()
+    last_seen = db.DateTimeField(default = datetime.now())
 
+    def ping(self):
+        self.last_seen = datetime.now()
+        user = User.objects(username=self.username)
+        user.update(last_seen = self.last_seen)
 
     @property
     def password(self):
