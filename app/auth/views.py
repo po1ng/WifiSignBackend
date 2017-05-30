@@ -24,7 +24,7 @@ def login():
         user = User.objects(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user,form.remember_me.data)
-            return render_template('index.html')
+            return redirect('/main_page/student/'+user.username)
     return render_template('login.html',form=form,user = current_user)
 
 @auth_Blueprint.route('/register',methods = ['GET','POST'])
@@ -36,7 +36,7 @@ def register():
         user.password = form.password.data
         user.save()
         flash('注册成功！可以登录了！')
-        return redirect(url_for('auth.index'))
+        return redirect(url_for('auth.login'))
 
     return render_template('register.html',form = form)
 

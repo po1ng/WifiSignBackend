@@ -4,6 +4,7 @@ from flask import  render_template,abort
 from flask import jsonify
 from config import CLASS_NUMBER
 from app.models.BaseUser import User
+from flask_login import login_required
 
 class_number = CLASS_NUMBER
 
@@ -13,6 +14,7 @@ def main_page():
     return render_template('index.html',Class=Class)
 
 @main_page_Blueprint.route('/student/<username>')
+@login_required
 def student(username):
     student = User.objects(username = username).first()
     if student is None:
