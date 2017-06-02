@@ -1,0 +1,170 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href='./css/signup.css' rel='stylesheet'>
+<link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
+
+<title>注册</title>
+</head>
+
+<body>
+    <div class='container-fluid' style='height:100%;'>
+        <div class='row' style='height:100%;'>
+            <div class='col-md-3 col-xs-3 col-sm-3'></div>
+            <div class='col-md-6'>
+                    <div class='row' style='height:100%;background-color:;'>
+                        <div class='col-md-2 col-xs-2 col-sm-2'></div>
+                        <div class='col-md-8 col-xs-8 col-sm-8' style='height:100%'>
+                        <div style='position:relative;left:15%;top:20%;width:70%;height:60%;'>
+                            <form id='myForm'>
+                                <div class='form-group has-feedback'>
+                                    <label class="control-label" for='stu_num'>输入学号</label>
+                                    <div class='input-group'>
+                                        <div class="input-group-addon">N</div>
+                                        <input type='text' name='stu_num' class='form-control' id='stu_num' placeholder='school number' >
+                                    </div>
+                                    <div class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></div>
+                                </div>
+                                <div class='form-group has-feedback'>
+                                    <label class="control-label" for='password'>设置密码</label>
+                                    <div class='input-group'>
+                                        <div class='input-group-addon'>P</div>
+                                        <input type='password' name='password' class='form-control' id='password' placeholder='password' >
+                                    </div>
+                                    <div class="glyphicon glyphicon-eye-close form-control-feedback" aria-hidden="true"></div>
+                                </div>
+                                <div class='form-group has-feedback'>
+                                    <label class="control-label" for='password'>确认密码</label>
+                                    <div class='input-group'>
+                                        <div class='input-group-addon'>P</div>
+                                        <input type='password' name='repassword' class='form-control' id='repassword' placeholder='password' >
+                                    </div>
+                                    <div class="glyphicon glyphicon-eye-close form-control-feedback" aria-hidden="true"></div>
+                                </div>
+                                <button type="button" class="btn btn-info" id='signup'>注册</button>
+                                <a href='./login.html' class="btn btn-danger" id='signup'>返回登录页面</a>
+                            </form>
+                        </div>
+                        </div>
+                        <div class='col-md-2 col-xs-2 col-sm-2'></div>
+                    </div>
+                </div>
+                <div style='height:15%;'></div>
+            </div>
+            <div class='col-md-3 col-xs-3 col-sm-3'></div>
+        </div>
+    </div>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src='https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js'></script>
+<script>
+    $(document).ready(function(){
+        $('#myForm').bootstrapValidator({
+            message:'你输入的学号不合法',
+            feedbackIcons: {
+                valid:'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                stu_num: {
+                message: 'The username is not valid',
+                
+                validators: {
+                    notEmpty: {
+                        message: '用户名不能为空'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: '学号长度必须在6到30之间'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9]+$/,
+                        message: '学号由数字字母组成'
+                    }
+                }
+                },
+                password: {
+                    message:'密码无效',
+                    validators: {
+                        notEmpty: {
+                            message: '密码不能为空'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: '密码长度必须在6到30之间'
+                        },
+                        /*identical: {
+                            field: 'repassword',
+                            message: '两次密码不一致'
+                        },*/
+                        different: {
+                            field: 'stu_num',
+                            message: '不能将学号当做密码'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: '密码只能由数字，字母，下划线，反斜线和点组成'
+                        }
+                    }
+                },
+                repassword: {
+                    message: '密码无效',
+                    validators: {
+                        notEmpty: {
+                            message: '两次密码不一致'
+                        },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: '两次密码不一致'
+                    },
+                    identical: {
+                        field: 'password',
+                        message: '两次密码不一致'
+                    },
+                    different: {
+                        field: 'stu_num',
+                        message: '不能将学号当做密码'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+                    }
+                }
+            }
+        });
+    });
+    
+    $('#signup').on('click',function(e){
+        //alert(e.target);
+        var bootstrapValidator = $('#myForm').data('bootstrapValidator');
+        bootstrapValidator.validate();
+        if(bootstrapValidator.isValid()){
+            //提交注册信息到数据库
+            window.location.href='login.html';
+        }
+    });
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+</script>
+
+</body>
+
+</html>
