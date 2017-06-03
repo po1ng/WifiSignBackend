@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
 
 <head>
@@ -81,4 +82,89 @@
 
 </body>
 
+=======
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href="./css/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
+<link href='./css/class.css' rel='stylesheet'>
+<title>百分比</title>
+</head>
+
+<body>
+    <div id='con' class='container-fluid' style='height:100%'></div>
+<script src="./js/jquery.js"></script>
+<script src="./css/bootstrap3/js/bootstrap.min.js"></script>
+<script src='./js/highcharts/highcharts.js'></script>
+
+
+<script>
+    var chart = null;
+    $(function () {
+        $('#con').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBackgroundImage:'./picture/class2.jpg',
+                plotBorderWidth: null,
+                plotShadow: false,
+                spacing:[0,0,0,0]
+            },
+            title: {
+                floating:true,
+                text: '到课率'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            //color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    },
+                    point: {
+                        events: {
+                            mouseOver: function(e) {
+                                this.slice();
+                            },
+                            mouseOut:function(e) {
+                                this.slice();
+                            }
+                        }
+                    },
+                }
+            },
+            series: [{
+                type: 'pie',
+                innerSize: '40%',
+                name: '到课率',
+                data: [
+                    {name:'到课',y: 45.0},
+                    {name:'缺勤',y: 55.0}
+                ]
+            }]
+        },function(c) {
+        // 环形图圆心
+            var centerY = c.series[0].center[1],
+                titleHeight = parseInt(c.title.styles.fontSize);
+            c.setTitle({
+                y:centerY + titleHeight/2
+            });
+            chart = c;
+        });
+    });
+
+</script>
+
+</body>
+
+>>>>>>> d188c8194268130c418852f265f15c566ca3f538
 </html>
