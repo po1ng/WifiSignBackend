@@ -11,10 +11,16 @@ class MongoPipeline:
 
 
 
-    def open_connection(self, mongo_db):
-        self.client = pymongo.MongoClient(self.host, self.port)
-        self.db = self.client[mongo_db]
-        # print ("connected")
+    def open_connection(self, mongo_db,host = None,username = None,
+                        password = None,ip = None):
+        self.host = host
+        if self.host != None:
+            command =  'mongodb://' + username + ':' + password + '@' + ip + ':27017'
+            self.client = pymongo.MongoClient(command)
+            self.db = self.client[mongo_db]
+        else:
+            self.client = pymongo.MongoClient(self.host, self.port)
+            self.db = self.client[mongo_db]
 
     def close_connection(self):
         self.client.close()
