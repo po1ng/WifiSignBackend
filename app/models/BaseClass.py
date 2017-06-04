@@ -15,7 +15,7 @@ class BaseClass():
     # 该班级所有学生的名单
     def calculate_students(self,class_id):
         conn = MongoPipeline()
-        conn.open_connection('qiandao_mac_name')
+        conn.open_connection('web_info',username='pipi',password='123456',ip='localhost')
         students = conn.getIds('info',{"class_num":class_id})
         student_num = None
         list_students = []
@@ -26,7 +26,7 @@ class BaseClass():
     # 该班级，某一天，某一堂课签到学生的名单
     def calculate_sign_student(self,class_id):
         conn = MongoPipeline()
-        conn.open_connection('qiandao_mac_name')
+        conn.open_connection('web_info', username='pipi', password='123456', ip='localhost')
         students = conn.getIds('info',{'class_num':class_id})
         sign_student = []
         for student in students:
