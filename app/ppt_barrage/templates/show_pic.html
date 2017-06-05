@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a>
+        <button onclick="addPic(this)">The next pic</button>
+        <button>The last pic</button>
+    </a>
+    <img src="./static/img/2017-05-16 16-26-36屏幕截图.png" id="pic_hold">
+    <h1>{{ show_pic_info.path  }}</h1>
+</body>
+    <script>
+        var number_pic = {{ show_pic_info.number }};
+        var file_path = {{ show_pic_info.path }};
+        var the_number = 0;
+        function addPic(whichpic) {
+            var hold = document.getElementById('pic_hold');
+            var pic_path= file_path + '0.jpg';
+            hold.setAttribute('src',pic_path)
+        }
+    </script>
+</html>
