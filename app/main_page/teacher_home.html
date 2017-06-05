@@ -133,8 +133,9 @@
                         <div class='panel-body' style='height:220px;overflow:auto;'>
                             <ul class='list-group'>
                                 <li class="list-group-item">
-                                    
-                                </li>
+
+
+
                                 <li class="list-group-item">
                                     
                                 </li>
@@ -148,8 +149,8 @@
                                     
                                 </li>
                                 <li class="list-group-item">
-                                    
-                                </li>
+
+
                                 <li class="list-group-item">
                                     
                                 </li>
@@ -404,18 +405,24 @@
     all=suggestStu();
     names=all[0];
     hrefs=all[1];
-    
-    
+
+
     
     stus_good.html(
         function(index,obj_j){
-            stus_good.eq(index).html("<a class='btn btn-default' style='width:100%;border-style:none;' href='"+hrefs[index]+"'><span class='glyphicon glyphicon-user pull-left'></span>"+names[index]+"</a>");
+            stus_good.eq(index).html
+            (
+                "<a class='btn btn-default' style='width:100%;border-style:none;' href='"+hrefs[index]+"'>" +
+                "<img href='static/image/学生.png'>"+
+                names[index]+
+                "</a>"
+            );
         }
     );
 
 //{#    <img src="./static/image/学生.png" height="200" width="200"/><img src="./static/image/学生.png" height="200"#}
 //{#                                                                     width="200"/>#}
-</script>
+   </script>
 
 </body>
 
