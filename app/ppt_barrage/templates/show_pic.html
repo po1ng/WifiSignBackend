@@ -6,20 +6,37 @@
 </head>
 <body>
     <a>
-        <button onclick="addPic(this)">The next pic</button>
-        <button>The last pic</button>
+        <button onclick="addPic()">The next pic</button>
+        <button onclick="subPic()">The last pic</button>
     </a>
-    <img src="./static/img/2017-05-16 16-26-36屏幕截图.png" id="pic_hold">
-    <h1>{{ show_pic_info.path  }}</h1>
-</body>
-    <script>
-        var number_pic = {{ show_pic_info.number }};
-        var file_path = {{ show_pic_info.path }};
+    <img src="./static/img/2017-05-16 16-26-36屏幕截图.png" id="pic_hold" width="300px" height="300px">
+<script>
+        var number_pic = {{ show_pic_info.number|tojson }};
+        var file_path = {{ show_pic_info.path|tojson }};
         var the_number = 0;
-        function addPic(whichpic) {
+        function addPic() {
             var hold = document.getElementById('pic_hold');
-            var pic_path= file_path + '0.jpg';
+            if (the_number + 1 == number_pic){
+                the_number = the_number;
+            }
+            else{
+                the_number += 1;
+            }
+            var pic_path= file_path + '/' + the_number.toString() + '.jpg';
+            hold.setAttribute('src',pic_path)
+        }
+        function subPic() {
+            var hold = document.getElementById('pic_hold');
+            if (the_number - 1 <0){
+                the_number = the_number;
+            }
+            else{
+                the_number -= 1;
+            }
+            var pic_path= file_path + '/' + the_number.toString() + '.jpg';
             hold.setAttribute('src',pic_path)
         }
     </script>
+</body>
+
 </html>

@@ -75,17 +75,17 @@ def ppt_pdf_pic(filename_ext,filename):
 
     result_command = os.popen(pdf_pic_command)
     result_command = result_command.read()
-    show_pic(folder_dir)
+    show_pic(file_path = folder_dir,filename = str(filename))
 
-def show_pic(file_path):
+def show_pic(file_path =None,filename = None):
     print(file_path)
     files_info = os.walk(file_path)
     files = None
     for root,dirs,files in files_info:
         pass
     number_pic = len(files)
-
-    show_pic_info['path'] = file_path
+    opposite_path = './static/doc/' + filename + '-pic'
+    show_pic_info['path'] = opposite_path
     show_pic_info['number'] = number_pic
     print(files)
     return render_template('show_pic.html',show_pic_info = show_pic_info)
