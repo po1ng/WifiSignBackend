@@ -11,6 +11,7 @@ bootstrap = Bootstrap(app)
 
 UPLOAD_FOLDER = './static/doc'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  # 设置文件上传的目标文件夹
+
 show_pic_info = {}
 
 @ppt_barrage_Blueprint.route('/')
@@ -38,7 +39,18 @@ def upload():
 
 @ppt_barrage_Blueprint.route('/show_pic')
 def show_pic():
-    return render_template('show_pic.html',show_pic_info = show_pic_info)
+    oppo_path = app.config['UPLOAD_FOLDER']
+    abs_path = os.path.abspath(os.path.dirname(__file__))
+    ppt_path = ''.join([abs_path,'/static/doc'])
+    print(ppt_path)
+    folds = []
+    for root,dirnames,filenames in os.walk(ppt_path):
+        # print(filenames)
+        for dirname in dirnames:
+            folds.append(dirname)
+    print(folds)
+
+    return render_template('show_pic.html',folds = folds)
 
 
 def api_upload(app_boj, file):
@@ -84,11 +96,11 @@ def show_pic(file_path =None,filename = None):
     for root,dirs,files in files_info:
         pass
     number_pic = len(files)
-    opposite_path = './static/doc/' + filename + '-pic'
+    opposite_path = app.config['UPLOAD_FOLDER'] + filename + '-pic'
     show_pic_info['path'] = opposite_path
     show_pic_info['number'] = number_pic
     print(files)
-    return render_template('show_pic.html',show_pic_info = show_pic_info)
+
 
 
 
