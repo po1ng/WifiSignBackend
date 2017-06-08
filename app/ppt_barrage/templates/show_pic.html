@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="./static/js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
     <a>
@@ -11,6 +12,10 @@
     </a>
     <img src="./static/img/2017-05-16 16-26-36屏幕截图.png" id="pic_hold" width="300px" height="300px">
     <div id="a"></div>
+    <a>
+        <button onclick="foldAdd()">The next fold pages</button>
+        <button>The last fold pages</button>
+    </a>
 
 
 {#<script>#}
@@ -42,22 +47,46 @@
 {#    </script>#}
 </body>
     <script>
-
-            var ul_list = document.createElement('ul');
+            var ppt_catalog_num = 0;
+            var ppt_catalog_total ;
             var ppt_catalog = document.getElementById('a');
-
             var folds = {{ folds|safe }};
+            if (folds.length%5==0){
+                ppt_catalog_total = folds.length/5;
+            }
+            else{
+                ppt_catalog_total = (folds.length/5) + 1;
+            }
+            var ul_array = [];
+            var result = [];
+            for(var i=0,len=folds.length;i<len;i+=5){
+                result.push(folds.slice(i,i+5));
+            }
+            for (var i = 0 ; i < result.length;i++){
+                var ul_list = document.createElement('ul');
+                for ( var j = 0 ; j < result[i].length;j++){
+                    var the_li = document.createElement('li');
+                    var text = document.createTextNode(result[i][j].toString());
+                    the_li.appendChild(text);
+                    ul_list.appendChild(the_li);
+                }
+                ul_array.push(ul_list);
+            }
+            ppt_catalog.appendChild(ul_array[1])
 
-            for(var i = 0 ;i < folds.length; i++){
-
-                var _li = document.createElement('li');
-                var text = document.createTextNode(folds[i].toString());
-                _li.appendChild(text)
-                ul_list.appendChild(_li)
-
+    </script>
+    <script>
+         function foldAdd() {
+                if (ppt_catalog_num + 1 >= ppt_catalog_total){
+                    ppt_catalog_num = ppt_catalog_num;
+                }
+                else{
+                    ppt_catalog_num += 1;
+                }
+                var a = document.getElementById('a');
+                $('#a').empty()
+                a.appendChild(ul_array[ppt_catalog_num]);
 
             }
-            ppt_catalog.appendChild(ul_list)
-
     </script>
 </html>
