@@ -14,7 +14,7 @@
     <div id="a"></div>
     <a>
         <button onclick="foldAdd()">The next fold pages</button>
-        <button>The last fold pages</button>
+        <button onclick="foldSub()">The last fold pages</button>
     </a>
 
 
@@ -47,7 +47,7 @@
 {#    </script>#}
 </body>
     <script>
-            var ppt_catalog_num = 0;
+            var ppt_catalog_num = 1;
             var ppt_catalog_total ;
             var ppt_catalog = document.getElementById('a');
             var folds = {{ folds|safe }};
@@ -55,7 +55,7 @@
                 ppt_catalog_total = folds.length/5;
             }
             else{
-                ppt_catalog_total = (folds.length/5) + 1;
+                ppt_catalog_total = Math.floor(folds.length/5) + 1;
             }
             var ul_array = [];
             var result = [];
@@ -77,7 +77,7 @@
     </script>
     <script>
          function foldAdd() {
-                if (ppt_catalog_num + 1 >= ppt_catalog_total){
+                if (ppt_catalog_num + 1 == ppt_catalog_total){
                     ppt_catalog_num = ppt_catalog_num;
                 }
                 else{
@@ -88,5 +88,16 @@
                 a.appendChild(ul_array[ppt_catalog_num]);
 
             }
+        function foldSub() {
+            if (ppt_catalog_num - 1 < 0){
+                ppt_catalog_num = ppt_catalog_num;
+            }
+            else{
+                ppt_catalog_num -= 1;
+            }
+            var a = document.getElementById('a');
+            $('#a').empty()
+            a.appendChild(ul_array[ppt_catalog_num]);
+        }
     </script>
 </html>
