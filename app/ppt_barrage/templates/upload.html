@@ -27,7 +27,7 @@
             control.fileinput({
                 language: 'zh', //设置语言
                 uploadUrl: uploadUrl, //上传的'地址
-                allowedFileExtensions : ['pptx','pdf'],//接收的文件后缀
+                allowedFileExtensions : ['pptx','ppt'],//接收的文件后缀
                 showRemove: false,
                 showZoom: false,
 {#                showUpload: false, //是否显示上传按钮#}
@@ -36,6 +36,7 @@
                 previewFileIconSettings: {
                     'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>'
                 }
+
             });
         }
     </script>
@@ -47,12 +48,7 @@
 
 {% block body %}
     {{ super() }}
-    {% for message in get_flashed_messages() %}
-         <div class="alert alert-warning">
-             <button type="button" class="close" data-dismiss="alert">&times;</button>
-             {{ message }}
-         </div>
-     {% endfor %}
+
     <div class="cover-container">
         <div class="row">
             <div class="col-lg-9 col-lg-offset-2 div_head_style">
@@ -72,7 +68,27 @@
                         initFileInput("file-Portrait", "/ppt_barrage/api/upload");
                     </script>
                 </div>
+                {% for message in get_flashed_messages() %}
+                    <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                     {{ message }}
+                    </div>
+                {% endfor %}
+
             </div>
+        <script>
+            $("#file-Portrait").on("fileuploaded", function(event, data, previewId, index){
+                if(data.response.msg=='上传成功')
+                    {
+                         alert('处理成功');
+                     }
+                else{
+                    alert('上传失败，文件名已存在，请修改后再上传！');
+                }
+
+            })
+        </script>
         </div>
     </div>
+
 {% endblock %}

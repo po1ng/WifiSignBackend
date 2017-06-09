@@ -3,7 +3,7 @@ import os
 import time
 import json
 from flask import jsonify
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,flash
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
@@ -60,11 +60,17 @@ def api_upload(app_boj, file):
         os.makedirs(file_dir)  # 文件夹不存在就创建
     fname = file.filename
     ext = fname.rsplit('.', 1)[1]  # 获取文件后缀
+    file_name = fname.rsplit('.',1)[0]
+    judge_file = os.path.join(file_dir,fname)
+    print(judge_file)
+    if os.path.exists(judge_file):
+        print(judge_file)
+        return jsonify({"result": 1, "new_name": fname, "errmsg": "上传失败，文件名已存在！"})
     unix_time = int(time.time())
     new_filename = str(unix_time)+'.'+ext   # 修改文件名
-    file.save(os.path.join(file_dir, new_filename))  #保存文件到upload目录
-    ppt_pdf_pic(new_filename,unix_time)
-    return jsonify({"result": 1, "new_name": new_filename, "errmsg": "上传成功"})
+    file.save(os.path.join(file_dir, fname))  #保存文件到upload目录
+    ppt_pdf_pic(fname,file_name)
+    return jsonify({"result": 0, "new_name": fname, "errmsg": "上传成功"})
 
 # 上传的ppt转为pdf再转为picture
 def ppt_pdf_pic(filename_ext,filename):
