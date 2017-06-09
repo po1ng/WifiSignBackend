@@ -7,8 +7,8 @@
 </head>
 <body>
     <a>
-        <button >The next pic</button>
-        <button >The last pic</button>
+        <button id="next_pic">The next pic</button>
+        <button id="las_pic">The last pic</button>
     </a>
     <img src="./static/img/2017-05-16 16-26-36屏幕截图.png" id="pic_hold" width="300px" height="300px">
     <div id="a"></div>
@@ -47,6 +47,30 @@
 {#    </script>#}
 </body>
     <script>
+        var path;
+        var files_number;
+        var obj_data;
+        function ajaxTest(filename) {
+            var data = {
+            "filename": filename
+            }
+        $.ajax({
+        type: 'POST',
+        url: './api/info_file',
+        async: false,
+        data: data,
+        dataType: 'json',
+        success: function(data) {
+{#        var a = JSON.parse(data);#}
+{#        document.write(JSON.parse(data))#}
+{#            document.write(data['path'])#}
+{#            document.write(data['path'])#}
+            obj_data = data
+
+        }
+        });
+        }
+
             var ppt_catalog_num = 1;
             var ppt_catalog_total ;
             var ppt_catalog = document.getElementById('a');
@@ -65,8 +89,15 @@
             for (var i = 0 ; i < result.length;i++){
                 var div_list = document.createElement('div');
                 for ( var j = 0 ; j < result[i].length;j++){
-                    var the_p = document.createElement('p');
+                    var the_p = document.createElement('button');
                     var text = document.createTextNode(result[i][j].toString());
+                    ajaxTest(result[i][j].toString());
+                    path = obj_data['path']
+                    files_number = obj_data['number']
+                    the_p.setAttribute('href',path)
+                    the_p.onclick = function (){
+                        choosePPT(this);
+                    };
                     the_p.appendChild(text);
                     div_list.appendChild(the_p);
                 }
@@ -76,6 +107,16 @@
 
     </script>
     <script>
+         function writeData() {
+             document.write(obj_data['path'])
+         }
+         function choosePPT(which) {
+             var file_path = which.getAttribute('href')
+             var pic_hold = document.getElementById('pic_hold')
+             var set_path = file_path.toString() + '/1.jpg'
+             pic_hold.setAttribute('src',file_path.toString() + '/1.jpg')
+         }
+
          function foldAdd() {
                 if (ppt_catalog_num + 1 == ppt_catalog_total){
                     ppt_catalog_num = ppt_catalog_num;

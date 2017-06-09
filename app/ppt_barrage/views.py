@@ -12,7 +12,7 @@ bootstrap = Bootstrap(app)
 UPLOAD_FOLDER = './static/doc'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  # 设置文件上传的目标文件夹
 
-show_pic_info = {}
+
 
 @ppt_barrage_Blueprint.route('/')
 def hello_world():
@@ -52,6 +52,23 @@ def show_pic():
 
     return render_template('show_pic.html',folds = folds)
 
+@ppt_barrage_Blueprint.route('/api/info_file',methods = ['POST'])
+def show_info_file():
+    show_pic_info = {}
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    basedir = basedir + '/static/doc'
+    filename = request.form.get('filename')
+    file_path = os.path.join(basedir,filename )
+    files_info = os.walk(file_path)
+    files = None
+    for root,dirs,files in files_info:
+        pass
+    number_pic = len(files)
+    opposite_path = os.path.join(app.config['UPLOAD_FOLDER'],filename)
+    show_pic_info['path'] = opposite_path
+    show_pic_info['number'] = number_pic
+    print(show_pic_info)
+    return jsonify(show_pic_info)
 
 def api_upload(app_boj, file):
     basedir = os.path.abspath(os.path.dirname(__file__))  # 获取当前项目的绝对路径
@@ -93,19 +110,9 @@ def ppt_pdf_pic(filename_ext,filename):
 
     result_command = os.popen(pdf_pic_command)
     result_command = result_command.read()
-    show_pic(file_path = folder_dir,filename = str(filename))
 
-def show_pic(file_path =None,filename = None):
-    print(file_path)
-    files_info = os.walk(file_path)
-    files = None
-    for root,dirs,files in files_info:
-        pass
-    number_pic = len(files)
-    opposite_path = app.config['UPLOAD_FOLDER'] + filename + '-pic'
-    show_pic_info['path'] = opposite_path
-    show_pic_info['number'] = number_pic
-    print(files)
+
+
 
 
 
