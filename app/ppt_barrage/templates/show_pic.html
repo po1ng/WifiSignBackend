@@ -63,14 +63,14 @@
                 result.push(folds.slice(i,i+5));
             }
             for (var i = 0 ; i < result.length;i++){
-                var ul_list = document.createElement('ul');
+                var div_list = document.createElement('div');
                 for ( var j = 0 ; j < result[i].length;j++){
-                    var the_li = document.createElement('li');
+                    var the_p = document.createElement('p');
                     var text = document.createTextNode(result[i][j].toString());
-                    the_li.appendChild(text);
-                    ul_list.appendChild(the_li);
+                    the_p.appendChild(text);
+                    div_list.appendChild(the_p);
                 }
-                ul_array.push(ul_list);
+                ul_array.push(div_list);
             }
             ppt_catalog.appendChild(ul_array[1])
 
