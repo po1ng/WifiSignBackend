@@ -18,6 +18,9 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  # 设置文件上传的目标文件
 def hello_world():
     return 'Hello World!'
 
+@ppt_barrage_Blueprint.route('/index')
+def index():
+    return render_template('ppt_barrage_home.html')
 
 @ppt_barrage_Blueprint.route('/upload', methods=["GET", "POST"])
 def upload_test():
