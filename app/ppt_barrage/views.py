@@ -81,6 +81,8 @@ def show_info_file():
     opposite_path = os.path.join(app.config['UPLOAD_FOLDER'],filename)
     show_pic_info['path'] = opposite_path
     show_pic_info['number'] = number_pic
+    show_pic_info[filename] = number_pic
+    show_pic_info['filename'] = filename
     print(show_pic_info)
     return jsonify(show_pic_info)
 

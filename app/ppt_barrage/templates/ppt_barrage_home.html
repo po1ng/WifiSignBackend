@@ -160,10 +160,10 @@
 								<div class="background-picture" style="width:860px;height:450px;background-size: 100% 100%;
 		background-repeat: no-repeat;  background-image:url(static/img/5.jpg)"  id="divtest">
 		<div class="col-md-6" style="width:430px;height:450px;float:left" >
-			<button id="pic_left" style="height:450px;width:430px;background:none;border:none;outline:none" onclick="picChange(this)"></button>
+			<button id="pic_left" style="height:450px;width:430px;background:none;border:none;outline:none" onclick="picChangeLeft(this)"></button>
 		</div>
 		<div class="col-md-6" style="width:430px;height:450px;float:left" >
-			<button id="pic_right" style="height:450px;width:430px;background:none;border:none;outline:none"></button>
+			<button id="pic_right" style="height:450px;width:430px;background:none;border:none;outline:none" onclick="picChangeRight(this)"></button>
 		</div>
 	</div>
 
@@ -237,20 +237,7 @@
 	<script>hljs.initHighlightingOnLoad();</script>
 <script>
 //添加js文件--
-function picChange(which) {
-    var divtest = document.getElementById('divtest');
-    var title = divtest.getAttribute('title');
-    var pic_num = parseInt(title);
-    pic_num += 1;
-    divtest.setAttribute('title',pic_num.toString());
-    var url_path = $('#divtest').css('background-image');
-    var oppo_path = url_path.match('ppt_barrage/(.*?)"')[1];
-    oppo_path = oppo_path.replace(/[0-9]\d*.jpg/,pic_num.toString() + '.jpg');
-{#    document.write(oppo_path);#}
-    var command = './' + oppo_path;
-    command = 'url("' + command + '")';
-    $('#divtest').css('background-image',command);
-}
+
 
 (function(){
 $("#danmu").danmu({
@@ -398,6 +385,47 @@ function settime(){
 }
 	</script>
 <script>
+    var folds_size = 0;
+function picChangeLeft(which) {
+    var divtest = document.getElementById('divtest');
+    var title = divtest.getAttribute('title');
+    var pic_num = parseInt(title);
+    if(pic_num - 1 < 0){
+        pic_num = 0;
+    }
+    else{
+        pic_num -= 1;
+    }
+    divtest.setAttribute('title',pic_num.toString());
+    var url_path = $('#divtest').css('background-image');
+    var oppo_path = url_path.match('ppt_barrage/(.*?)"')[1];
+    oppo_path = oppo_path.replace(/[0-9]\d*.jpg/,pic_num.toString() + '.jpg');
+{#    document.write(oppo_path);#}
+    var command = './' + oppo_path;
+    command = 'url("' + command + '")';
+    $('#divtest').css('background-image',command);
+}
+
+function picChangeRight(which) {
+    var divtest = document.getElementById('divtest');
+    var title = divtest.getAttribute('title');
+    var pic_num = parseInt(title);
+    if(pic_num + 1 >= folds_size){
+        pic_num = folds_size-1;
+    }
+    else{
+        pic_num +=1 ;
+    }
+
+    divtest.setAttribute('title',pic_num.toString());
+    var url_path = $('#divtest').css('background-image');
+    var oppo_path = url_path.match('ppt_barrage/(.*?)"')[1];
+    oppo_path = oppo_path.replace(/[0-9]\d*.jpg/,pic_num.toString() + '.jpg');
+{#    document.write(oppo_path);#}
+    var command = './' + oppo_path;
+    command = 'url("' + command + '")';
+    $('#divtest').css('background-image',command);
+}
         var path;
         var files_number;
         var obj_data;
@@ -421,7 +449,7 @@ function settime(){
         }
         });
         }
-
+            var filename_and_number = {};
             var ppt_catalog_num = 1;
             var ppt_catalog_total ;
             var ppt_catalog = document.getElementById('a');
@@ -445,6 +473,8 @@ function settime(){
                     ajaxTest(result[i][j].toString());
                     path = obj_data['path']
                     files_number = obj_data['number']
+                    var file_name = obj_data['filename']
+                    filename_and_number[file_name] = obj_data[file_name]
                     the_p.setAttribute('href',path)
                     the_p.onclick = function (){
                         choosePPT(this);
@@ -461,6 +491,9 @@ function settime(){
 
          function choosePPT(which) {
              var file_path = which.getAttribute('href');
+             var splits = file_path.split('/');
+             var filename = splits[splits.length-1];
+             folds_size = filename_and_number[filename];
              var set_path = file_path.toString() + '/0.jpg';
              var command = 'url(' + set_path + ')';
              $('#divtest').css('background-image',command);
