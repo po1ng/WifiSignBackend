@@ -20,7 +20,18 @@ def hello_world():
 
 @ppt_barrage_Blueprint.route('/index')
 def index():
-    return render_template('ppt_barrage_home.html')
+    oppo_path = app.config['UPLOAD_FOLDER']
+    abs_path = os.path.abspath(os.path.dirname(__file__))
+    ppt_path = ''.join([abs_path, '/static/doc'])
+    print(ppt_path)
+    folds = []
+    for root, dirnames, filenames in os.walk(ppt_path):
+        # print(filenames)
+        for dirname in dirnames:
+            folds.append(dirname)
+    print(folds)
+
+    return render_template('ppt_barrage_home.html', folds=folds)
 
 @ppt_barrage_Blueprint.route('/upload', methods=["GET", "POST"])
 def upload_test():
@@ -109,7 +120,7 @@ def ppt_pdf_pic(filename_ext,filename):
     pdf_dir = ''.join([basedir,'/',str(filename),'.pdf'])
     # pdf转为图片的命令
     pic_command = ''.join([folder_dir,'/%d.jpg'])
-    pdf_pic_command = ('convert -density 300 ' + pdf_dir + ' ' + pic_command)
+    pdf_pic_command = ('convert -resize 1200x -density 150 -quality 100 ' + pdf_dir + ' ' + pic_command)
 
     result_command = os.popen(pdf_pic_command)
     result_command = result_command.read()

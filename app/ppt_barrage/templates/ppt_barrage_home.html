@@ -141,23 +141,17 @@
 				<div class="container-fluid">
 					<h3 class="page-title">Elements</h3>
 					<div class="row">
+
 						<div class="col-md-2" >
-							<div style="width=80%;height:450px;background-color:white;margin-top:0px;">
-								<p>目录</p>
-								<p>目录</p>
-								<p>目录</p>
-								<p>目录</p>
-								<p>目录</p>
-								<p>目录</p>
-								<p>目录</p>
-								<p>目录</p>
-								<p>目录</p>
-								<p>目录</p>
-								<p>目录</p>
-								<p>目录</p>
+                            <div style="width=80%;height:450px;background-color:white;margin-top:0px;" id="a">
+
 
 							</div>
 						</div>
+                        <a>
+                            <button onclick="foldAdd()">The next fold pages</button>
+                            <button onclick="foldSub()">The last fold pages</button>
+                        </a>
 						<div class="col-md-7" >
 							<div style="width=100%">
 								<!--添加弹幕-->
@@ -166,7 +160,7 @@
 								<div class="background-picture" style="width:860px;height:450px;background-size: 100% 100%;
 		background-repeat: no-repeat;  background-image:url(static/img/5.jpg)"  id="divtest">
 		<div class="col-md-6" style="width:430px;height:450px;float:left" >
-			<button id="pic_left" style="height:450px;width:430px;background:none;border:none;outline:none" onclick="picChange()"></button>
+			<button id="pic_left" style="height:450px;width:430px;background:none;border:none;outline:none" onclick="picChange(this)"></button>
 		</div>
 		<div class="col-md-6" style="width:430px;height:450px;float:left" >
 			<button id="pic_right" style="height:450px;width:430px;background:none;border:none;outline:none"></button>
@@ -225,6 +219,7 @@
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
 	</div>
+
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="static/vendor/jquery/jquery.min.js"></script>
@@ -242,11 +237,20 @@
 	<script>hljs.initHighlightingOnLoad();</script>
 <script>
 //添加js文件--
-function picChange() {
-
-                    $('#divtest').css('background-image','url(static/img/1.jpg)')
-
-            }
+function picChange(which) {
+    var divtest = document.getElementById('divtest');
+    var title = divtest.getAttribute('title');
+    var pic_num = parseInt(title);
+    pic_num += 1;
+    divtest.setAttribute('title',pic_num.toString());
+    var url_path = $('#divtest').css('background-image');
+    var oppo_path = url_path.match('ppt_barrage/(.*?)"')[1];
+    oppo_path = oppo_path.replace(/[0-9]\d*.jpg/,pic_num.toString() + '.jpg');
+{#    document.write(oppo_path);#}
+    var command = './' + oppo_path;
+    command = 'url("' + command + '")';
+    $('#divtest').css('background-image',command);
+}
 
 (function(){
 $("#danmu").danmu({
@@ -352,12 +356,12 @@ oPNode.appendChild(node);//将创建的文本内容插入到p节点中,追加方
 }
 
 
-function sc()
-{
-var e=document.getElementById("div1")
-e.scrollTop=e.scrollHeight;
-}
-var s=setInterval("sc()",200);
+{#function sc()#}
+{#{#}
+{#var e=document.getElementById("div1")#}
+{#e.scrollTop=e.scrollHeight;#}
+{#}#}
+{#var s=setInterval("sc()",200);#}
 
 
 
@@ -393,6 +397,100 @@ function settime(){
 	$('#danmu').data("nowtime",t);
 }
 	</script>
+<script>
+        var path;
+        var files_number;
+        var obj_data;
+        function ajaxTest(filename) {
+            var data = {
+            "filename": filename
+            }
+        $.ajax({
+        type: 'POST',
+        url: './api/info_file',
+        async: false,
+        data: data,
+        dataType: 'json',
+        success: function(data) {
+{#        var a = JSON.parse(data);#}
+{#        document.write(JSON.parse(data))#}
+{#            document.write(data['path'])#}
+{#            document.write(data['path'])#}
+            obj_data = data
 
+        }
+        });
+        }
+
+            var ppt_catalog_num = 1;
+            var ppt_catalog_total ;
+            var ppt_catalog = document.getElementById('a');
+            var folds = {{ folds|safe }};
+            if (folds.length%5==0){
+                ppt_catalog_total = folds.length/5;
+            }
+            else{
+                ppt_catalog_total = Math.floor(folds.length/5) + 1;
+            }
+            var ul_array = [];
+            var result = [];
+            for(var i=0,len=folds.length;i<len;i+=5){
+                result.push(folds.slice(i,i+5));
+            }
+            for (var i = 0 ; i < result.length;i++){
+                var div_list = document.createElement('div');
+                for ( var j = 0 ; j < result[i].length;j++){
+                    var the_p = document.createElement('button');
+                    var text = document.createTextNode(result[i][j].toString());
+                    ajaxTest(result[i][j].toString());
+                    path = obj_data['path']
+                    files_number = obj_data['number']
+                    the_p.setAttribute('href',path)
+                    the_p.onclick = function (){
+                        choosePPT(this);
+                    };
+                    the_p.appendChild(text);
+                    div_list.appendChild(the_p);
+                }
+                ul_array.push(div_list);
+            }
+            ppt_catalog.appendChild(ul_array[1])
+
+    </script>
+    <script>
+
+         function choosePPT(which) {
+             var file_path = which.getAttribute('href');
+             var set_path = file_path.toString() + '/0.jpg';
+             var command = 'url(' + set_path + ')';
+             $('#divtest').css('background-image',command);
+             var divtest = document.getElementById('divtest');
+             divtest.setAttribute('title',1);
+         }
+
+         function foldAdd() {
+                if (ppt_catalog_num + 1 == ppt_catalog_total){
+                    ppt_catalog_num = ppt_catalog_num;
+                }
+                else{
+                    ppt_catalog_num += 1;
+                }
+                var a = document.getElementById('a');
+                $('#a').empty()
+                a.appendChild(ul_array[ppt_catalog_num]);
+
+            }
+        function foldSub() {
+            if (ppt_catalog_num - 1 < 0){
+                ppt_catalog_num = ppt_catalog_num;
+            }
+            else{
+                ppt_catalog_num -= 1;
+            }
+            var a = document.getElementById('a');
+            $('#a').empty()
+            a.appendChild(ul_array[ppt_catalog_num]);
+        }
+    </script>
 </body>
 </html>
