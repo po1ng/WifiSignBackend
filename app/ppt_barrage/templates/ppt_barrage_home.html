@@ -147,43 +147,39 @@
 
 
 							</div>
+                            <div style="height: 30px;width: 100%;margin-top: 10px">
+                                <a>
+                                    <button  onclick="foldAdd()">next pages</button>
+                                    <button  onclick="foldSub()">last pages</button>
+                                </a>
+                            </div>>
 						</div>
-                        <a>
-                            <button onclick="foldAdd()">The next fold pages</button>
-                            <button onclick="foldSub()">The last fold pages</button>
-                        </a>
-						<div class="col-md-7" >
-							<div style="width=100%">
+
+						<div class="col-md-8" >
+							<div style="width:100%;height: 650px;">
 								<!--添加弹幕-->
-								<div id="danmuarea" class"text-center">
 								<div id="danmu" >
-								<div class="background-picture" style="width:860px;height:450px;background-size: 100% 100%;
+								<div class="background-picture" style="width:100%;height:650px;background-size: 100% 100%;
 		background-repeat: no-repeat;  background-image:url(static/img/5.jpg)"  id="divtest">
-		<div class="col-md-6" style="width:430px;height:450px;float:left" >
-			<button id="pic_left" style="height:450px;width:430px;background:none;border:none;outline:none" onclick="picChangeLeft(this)"></button>
+		<div class="col-md-6" style="width=50%;height:650px;float:left" >
+			<button id="pic_left" style="height:650px;width:100%;background:none;border:none;outline:none" onclick="picChangeLeft(this)"></button>
 		</div>
-		<div class="col-md-6" style="width:430px;height:450px;float:left" >
-			<button id="pic_right" style="height:450px;width:430px;background:none;border:none;outline:none" onclick="picChangeRight(this)"></button>
+		<div class="col-md-6" style="width:50%;height:650px;float:left" >
+			<button id="pic_right" style="height:650px;width:100%;background:none;border:none;outline:none" onclick="picChangeRight(this)"></button>
 		</div>
 	</div>
 
+
 								</div>
-								</div>
 
-								<div class="text-center ctr" >
-                      	<br>
+								<div class="text-center ctr" style="position: absolute;top:650px;margin: 5px;">
 
-                      <button type="button"  onclick="resumer() ">弹幕开始/继续</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                      <button type="button"  onclick="pauser()">弹幕暂停</button>  &nbsp;&nbsp;&nbsp;&nbsp;
-                       显示弹幕:<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'> &nbsp;&nbsp;&nbsp;&nbsp;
-                        弹幕透明度:<input type="range" name="op" id="op" onchange="op()" value="100"> <br><br>
-                      	当前弹幕运行时间(分秒)：<span id="time"></span>&nbsp;&nbsp;
-                      	设置当前弹幕时间(分秒)： <input type="text" id="set_time" max=20 />
-           <button type="button"  onclick="settime()">设置</button>
 
-                	<br><br>
+                      <button type="button"  onclick="resumer() ">开始</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button type="button"  onclick="pauser()">暂停</button>  &nbsp;&nbsp;&nbsp;&nbsp;
+                       开关:<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'> &nbsp;&nbsp;&nbsp;&nbsp;
+                        透明度:<input type="range" name="op" id="op" onchange="op()" value="50">
 
-                发弹幕:
               <select  name="color" id="color" >
               <option value="white">白色</option>
               <option value="red">红色</option>
@@ -205,9 +201,9 @@
             </div>
 							</div>
 						</div>
-						<div class="col-md-3 " style="padding:0px;" >
-							<div  id="div1" style="width=80%;height:450px;background-color:white;margin-top:0px;overflow:auto">
-								<p id="danmu_list" style="text-align:left;	"></p>
+						<div class="col-md-2" style="padding-left:16px;padding-right: -10px" >
+							<div  id="div1" style="width=80%;height:650px;background-color:white;margin-top:0px;overflow-y:auto">
+								<p id="danmu_list" style="text-align:left;	word-wrap: break-word;word-break: break-all"></p>
 							</div>
 						</div>
 					</div>
@@ -237,6 +233,7 @@
 	<script>hljs.initHighlightingOnLoad();</script>
 <script>
 //添加js文件--
+
 
 
 (function(){
@@ -333,22 +330,24 @@ function send(){
   var new_obj=eval('('+text_obj+')');
   $('#danmu').danmu("add_danmu",new_obj);
   document.getElementById('text').value='';
+  var today=new Date();
+  var s=today.getFullYear()+"-"+today.getMonth()+"-"+today.getDate()+" "+today.getHours()+":"+today.getMinutes()+":"+today.getSeconds()+" ";
 
 
 var oPNode = document.getElementById('danmu_list');//获取p节点的对象
 var node = document.createElement('p');//创建一个文本节点
-node.innerHTML = text ;//文本内容
+node.innerHTML = s+"&nbsp;&nbsp;&nbsp;&nbsp;"+text ;//文本内容
 oPNode.appendChild(node);//将创建的文本内容插入到p节点中,追加方式
 
 }
 
 
-{#function sc()#}
-{#{#}
-{#var e=document.getElementById("div1")#}
-{#e.scrollTop=e.scrollHeight;#}
-{#}#}
-{#var s=setInterval("sc()",200);#}
+function sc()
+{
+var e=document.getElementById("div1")
+e.scrollTop=e.scrollHeight;
+}
+var s=setInterval("sc()",200);
 
 
 
@@ -476,6 +475,8 @@ function picChangeRight(which) {
                     var file_name = obj_data['filename']
                     filename_and_number[file_name] = obj_data[file_name]
                     the_p.setAttribute('href',path)
+                    the_p.setAttribute("style","width:100%;border:0;height:50px;")
+
                     the_p.onclick = function (){
                         choosePPT(this);
                     };
