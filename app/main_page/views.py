@@ -33,7 +33,7 @@ def teacher():
     for student in list_unsign_students:
         dic_all_students[student] = 0
     print(dic_all_students)
-    return render_template('teacher_home.html',dic_all_students = dic_all_students)
+    return render_template('teacher.html',dic_all_students = dic_all_students)
 
 @main_page_Blueprint.route('/data')
 def data():
