@@ -160,7 +160,7 @@
 								<!--添加弹幕-->
 								<div id="danmu" >
 								<div class="background-picture" style="width:100%;height:650px;background-size: 100% 100%;
-		background-repeat: no-repeat;  background-image:url(static/img/5.jpg)"  id="divtest">
+		background-repeat: no-repeat;  background-image:url(static/img/5.jpg)"  id="ppt_hold">
 		<div class="col-md-6" style="width=50%;height:650px;float:left" >
 			<button id="pic_left" style="height:650px;width:100%;background:none;border:none;outline:none" onclick="picChangeLeft(this)"></button>
 		</div>
@@ -385,9 +385,12 @@ function settime(){
 	</script>
 <script>
     var folds_size = 0;
+    /*
+    PPT页数向左翻页
+     */
 function picChangeLeft(which) {
-    var divtest = document.getElementById('divtest');
-    var title = divtest.getAttribute('title');
+    var ppt_hold = document.getElementById('ppt_hold');
+    var title = ppt_hold.getAttribute('title');
     var pic_num = parseInt(title);
     if(pic_num - 1 < 0){
         pic_num = 0;
@@ -395,19 +398,20 @@ function picChangeLeft(which) {
     else{
         pic_num -= 1;
     }
-    divtest.setAttribute('title',pic_num.toString());
-    var url_path = $('#divtest').css('background-image');
+    ppt_hold.setAttribute('title',pic_num.toString());
+    var url_path = $('#ppt_hold').css('background-image');
     var oppo_path = url_path.match('ppt_barrage/(.*?)"')[1];
     oppo_path = oppo_path.replace(/[0-9]\d*.jpg/,pic_num.toString() + '.jpg');
-{#    document.write(oppo_path);#}
     var command = './' + oppo_path;
     command = 'url("' + command + '")';
-    $('#divtest').css('background-image',command);
+    $('#ppt_hold').css('background-image',command);
 }
-
+    /*
+    PPT页数向右翻页
+     */
 function picChangeRight(which) {
-    var divtest = document.getElementById('divtest');
-    var title = divtest.getAttribute('title');
+    var ppt_hold = document.getElementById('ppt_hold');
+    var title = ppt_hold.getAttribute('title');
     var pic_num = parseInt(title);
     if(pic_num + 1 >= folds_size){
         pic_num = folds_size-1;
@@ -416,14 +420,13 @@ function picChangeRight(which) {
         pic_num +=1 ;
     }
 
-    divtest.setAttribute('title',pic_num.toString());
-    var url_path = $('#divtest').css('background-image');
+    ppt_hold.setAttribute('title',pic_num.toString());
+    var url_path = $('#ppt_hold').css('background-image');
     var oppo_path = url_path.match('ppt_barrage/(.*?)"')[1];
     oppo_path = oppo_path.replace(/[0-9]\d*.jpg/,pic_num.toString() + '.jpg');
-{#    document.write(oppo_path);#}
     var command = './' + oppo_path;
     command = 'url("' + command + '")';
-    $('#divtest').css('background-image',command);
+    $('#ppt_hold').css('background-image',command);
 }
         var path;
         var files_number;
@@ -497,9 +500,9 @@ function picChangeRight(which) {
              folds_size = filename_and_number[filename];
              var set_path = file_path.toString() + '/0.jpg';
              var command = 'url(' + set_path + ')';
-             $('#divtest').css('background-image',command);
-             var divtest = document.getElementById('divtest');
-             divtest.setAttribute('title',1);
+             $('#ppt_hold').css('background-image',command);
+             var ppt_hold = document.getElementById('ppt_hold');
+             ppt_hold.setAttribute('title',1);
          }
 
          function foldAdd() {

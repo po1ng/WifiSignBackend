@@ -110,7 +110,7 @@ def ppt_pdf_pic(filename_ext,filename):
     basedir = os.path.abspath(os.path.dirname(__file__))
     basedir = basedir + '/static/doc'
     file_dir = ''.join([basedir,'/',filename_ext])
-    folder_dir = ''.join([basedir,'/',str(filename),'-pic'])
+    folder_dir = ''.join([basedir,'/',str(filename)])
     os.system('mkdir ' + folder_dir)
     # ppt转pdf的命令
     ppt_pdf_command = ('echo wsx8208279|sudo -S soffice --headless --invisible --convert-to pdf ' +
