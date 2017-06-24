@@ -38,7 +38,6 @@ def teacher():
 @main_page_Blueprint.route('/data')
 def data():
     Class = BaseClass(class_number)
-
     list_sign_students = Class.list_sign_students
     list_unsign_students = Class.list_unsign_students
     dic_all_students = {}
@@ -46,4 +45,18 @@ def data():
         dic_all_students[student] = 1
     for student in list_unsign_students:
         dic_all_students[student] = 0
+    # dic_all_students = jsonify(dic_all_students)
     return jsonify(dic_all_students)
+
+@main_page_Blueprint.route('/front/data')
+def front_data():
+    Class = BaseClass(class_number)
+    list_sign_students = Class.list_sign_students
+    list_unsign_students = Class.list_unsign_students
+    dic_all_students = {}
+    for student in list_sign_students:
+        dic_all_students[student] = 1
+    for student in list_unsign_students:
+        dic_all_students[student] = 0
+    jsonp = 'callback' + '(' + str(dic_all_students ) + ')'
+    return jsonp
