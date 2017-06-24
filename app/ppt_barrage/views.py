@@ -1,4 +1,5 @@
 from . import ppt_barrage as ppt_barrage_Blueprint
+from app.models.PPTBarrage import Barrage
 import os
 import time
 import json
@@ -127,16 +128,31 @@ def ppt_pdf_pic(filename_ext,filename):
     result_command = os.popen(pdf_pic_command)
     result_command = result_command.read()
 
+@ppt_barrage_Blueprint.route('/api/ppt_barrage',methods = ['POST'])
+def save_ppt_barrage():
+    barrage_time = request.form.get('time')
+    barrage_text = request.form.get('text')
+    ppt_name = request.form.get('ppt_name')
+    print(barrage_text,barrage_time)
+    barrage = Barrage(barrage_time = barrage_time,barrage_text = barrage_text,
+                      ppt_name = ppt_name)
+    barrage.save()
+    return jsonify({"status":"ok"})
 
-
-
-
-
-
-
-
-
-
+@ppt_barrage_Blueprint.route('/api/ppt_barrage/db',methods = ['POST'])
+def ppt_barrage_db():
+    ppt_name = request.form.get('ppt_name')
+    barrages_obj = Barrage.objects(ppt_name = ppt_name)
+    barrages = []
+    barrages_info = {}
+    for barrage in barrages_obj:
+        dic = {}
+        dic['barrage_time'] = barrage['barrage_time']
+        dic['barrage_text'] = barrage['barrage_text']
+        barrages.append(dic)
+    barrages_info['barrages'] = barrages
+    print(barrages_info)
+    return jsonify(barrages_info)
 
 
 if __name__ == '__main__':

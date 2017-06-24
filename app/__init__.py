@@ -16,7 +16,7 @@ def create_app():
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  # 设置文件上传的目标文件夹
     app.config['SECRET_KEY'] = 'hard to guess'
     app.config['MONGODB_SETTINGS'] = {  # 配置MongoDB
-        'db': 'admin',
+        'db': 'web',
         'host': '127.0.0.1',
         'port': 27017,
         'username':'pipi',

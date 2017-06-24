@@ -175,7 +175,8 @@
 								<div class="text-center ctr" style="position: absolute;top:650px;margin: 5px;">
 
 
-                      <button type="button"  onclick="resumer() ">开始</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button type="button"  onclick="resumer() ">开始</button>&nbsp;
+                      <button type="button"  onclick="showBarrage() ">重放</button>
                       <button type="button"  onclick="pauser()">暂停</button>  &nbsp;&nbsp;&nbsp;&nbsp;
                        开关:<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'> &nbsp;&nbsp;&nbsp;&nbsp;
                         透明度:<input type="range" name="op" id="op" onchange="op()" value="50">
@@ -318,6 +319,59 @@ function query() {
   });
 }
 
+function ajaxSendBarrage(text,barrage_time) {
+        var file_path = $('#ppt_hold').css('background-image')
+        var splits = file_path.split('/')
+        var ppt_name = splits[splits.length-2]
+        var data = {
+        "text": text,
+        "time": barrage_time,
+        "ppt_name":ppt_name
+        }
+        $.ajax({
+        type: 'POST',
+        url: './api/ppt_barrage',
+        async: false,
+        data: data,
+        dataType: 'json',
+        });
+        }
+
+function ajaxShowDbBarrage() {
+    var file_path = $('#ppt_hold').css('background-image')
+    var splits = file_path.split('/')
+    var ppt_name = splits[splits.length-2]
+    var data = {
+    "ppt_name":ppt_name
+    }
+        $.ajax({
+        type: 'POST',
+        url: './api/ppt_barrage/db',
+        async: false,
+        data: data,
+        dataType: 'json',
+        success: function(data) {
+{#        var a = JSON.parse(data);#}
+{#        document.write(JSON.parse(data))#}
+{#            document.write(data['path'])#}
+{#            document.write(data['path'])#}
+            var barrages = data['barrages'];
+            for(var barrage in barrages){
+{#                document.write(barrages[barrage].barrage_text);#}
+                var barrage_text = barrages[barrage].barrage_text;
+                var barrage_time = barrages[barrage].barrage_time;
+                var oPNode = document.getElementById('danmu_list');//获取p节点的对象
+                var node = document.createElement('p');//创建一个文本节点
+                node.innerHTML = barrage_time+"&nbsp;&nbsp;&nbsp;&nbsp;"+barrage_text;//文本内容
+                oPNode.appendChild(node);//将创建的文本内容插入到p节点中,追加方式
+                showDbBarrage(barrage_text);
+            }
+        }
+        });
+
+
+}
+
 function send(){
   var text = document.getElementById('text').value;
   var color = document.getElementById('color').value;
@@ -333,11 +387,11 @@ function send(){
   var today=new Date();
   var s=today.getFullYear()+"-"+today.getMonth()+"-"+today.getDate()+" "+today.getHours()+":"+today.getMinutes()+":"+today.getSeconds()+" ";
 
-
-var oPNode = document.getElementById('danmu_list');//获取p节点的对象
-var node = document.createElement('p');//创建一个文本节点
-node.innerHTML = s+"&nbsp;&nbsp;&nbsp;&nbsp;"+text ;//文本内容
-oPNode.appendChild(node);//将创建的文本内容插入到p节点中,追加方式
+  ajaxSendBarrage(text,s);
+  var oPNode = document.getElementById('danmu_list');//获取p节点的对象
+  var node = document.createElement('p');//创建一个文本节点
+  node.innerHTML = s+"&nbsp;&nbsp;&nbsp;&nbsp;"+text ;//文本内容
+  oPNode.appendChild(node);//将创建的文本内容插入到p节点中,追加方式
 
 }
 
@@ -503,7 +557,27 @@ function picChangeRight(which) {
              $('#ppt_hold').css('background-image',command);
              var ppt_hold = document.getElementById('ppt_hold');
              ppt_hold.setAttribute('title',1);
+             $('#danmu_list').empty();
+             ajaxShowDbBarrage();
          }
+         function showDbBarrage(barrage_text){
+            var text = barrage_text;
+            var color = document.getElementById('color').value;
+            var position = document.getElementById('position').value;
+            var time = $('#danmu').data("nowtime")+5;
+            var size =document.getElementById('text_size').value;
+            var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+'}';
+{#            $.post("stone.php",{danmu:text_obj});#}
+            var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+',"isnew":""}';
+            var new_obj=eval('('+text_obj+')');
+            $('#danmu').danmu("add_danmu",new_obj);
+         }
+
+         function showBarrage() {
+             $('#danmu_list').empty();
+             ajaxShowDbBarrage();
+         }
+
 
          function foldAdd() {
                 if (ppt_catalog_num + 1 == ppt_catalog_total){
