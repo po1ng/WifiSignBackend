@@ -10,7 +10,7 @@ class_number = CLASS_NUMBER
 @admin.route('/')
 def index():
     Class = BaseClass(class_number)
-    return render_template('index.html', Class=Class)
+    return render_template('admin.html', Class=Class)
 
 
 @admin.route('/list',methods = ['POST','GET'])
