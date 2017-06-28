@@ -20,20 +20,28 @@ def list():
     #     student_name = request.form['student_name']
     if request.method == 'GET':
         student_name = request.args.get('student_name')
-    student = Students.objects(student_name=student_name)
-    print(student)
-    print(type(student))
+    students = Students.objects(student_name=student_name)
+    print(students)
+    print(type(students))
 
-    list = {}
-    for each in student:
-        list[each['student_name']] = 0
-        list[each['student_id']] = 0
-        list[each['class_num']] = 0
-        list[each['time_start']] = 0
-        list[each['time_end']] = 0
-        list[each['tip']] = 0
+    students_dic = {}
+    list = []
+    for student in students:
+        student_dic = {}
+        student_dic['number'] = student['number']
+        student_dic['student_name'] = student['student_name']
+        student_dic['student_id'] = student['student_id']
+        student_dic['date'] = student['date']
+        student_dic['time_start'] = student['time_start']
+        student_dic['time_end'] = student['time_end']
+        student_dic['time'] = student['time']
+        student_dic['remarks'] = student['remarks']
+        list.append(student_dic)
 
-    jsonp = 'callback' + '(' + str(list) + ')'
+    students_dic['list'] = list
+    print(students_dic)
+
+    jsonp = 'callback' + '(' + str(students_dic) + ')'
     return jsonp
 
 # def save():

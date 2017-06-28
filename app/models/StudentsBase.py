@@ -3,10 +3,11 @@ from datetime import datetime
 
 
 class Students(db.Document):
-    student_name = db.StringField(required = True,max_length = 20)
+    number = db.IntField(required=True)
+    student_name = db.StringField(required = True,max_length = 30)
     student_id = db.IntField(required = True)
-    class_num = db.IntField(required = True)
-    time_start = db.StringField()
-    time_end = db.StringField()
-    tip = db.StringField()
-
+    date = db.StringField(required=True)
+    time_start = db.StringField(required=True)
+    time_end = db.StringField(required=True)
+    time = db.StringField(required=True)
+    remarks = db.StringField()
