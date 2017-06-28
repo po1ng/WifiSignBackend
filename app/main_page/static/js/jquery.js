@@ -1688,9 +1688,9 @@ Expr = Sizzle.selectors = {
 				2 what (child|of-type)
 				3 argument (even|odd|\d*|\d*n([+-]\d+)?|...)
 				4 xn-component of xn+y argument ([+-]?\d*n|)
-				5 sign of xn-component
+				5 admin of xn-component
 				6 x of xn-component
-				7 sign of y-component
+				7 admin of y-component
 				8 y of y-component
 			*/
 			match[1] = match[1].toLowerCase();
@@ -6119,7 +6119,7 @@ var getStyles = function( elem ) {
 		documentElement.removeChild( container );
 
 		// Nullify the div so it wouldn't be stored in the memory and
-		// it will also be a sign that checks already performed
+		// it will also be a admin that checks already performed
 		div = null;
 	}
 

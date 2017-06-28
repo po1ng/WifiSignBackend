@@ -36,6 +36,8 @@ def create_app():
     app.register_blueprint(main_page)
     from .ppt_barrage import ppt_barrage
     app.register_blueprint(ppt_barrage)
+    from .admin import admin
+    app.register_blueprint(admin)
     from .auth import auth
     app.register_blueprint(auth)
 
