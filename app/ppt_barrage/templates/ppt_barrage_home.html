@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 	<title>ppt show</title>
 	<meta charset="utf-8">
@@ -19,10 +18,7 @@
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="static/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="static/img/favicon.png">
-
-
 	<style>
-
 	#danmuarea {
 		position: relative;
 		<!--background-image:url('static/img/1.jpg');-->
@@ -32,27 +28,16 @@
 		height: 445px;
 		margin-left: auto;
 		margin-right: auto;
-
-
-
 	}
-
-
-
 	.ctr {
 		font-size: 1em;
 		  line-height: 2em;
 	}
-
     button{
            margin: -2px;
         }
-
 	</style>
-
-
 </head>
-
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -73,7 +58,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
 								<i class="lnr lnr-alarm"></i>
-								<span class="badge bg-danger">5</span>							</a>
+								<span class="badge bg-danger">5</span>
+                            </a>
 							<ul class="dropdown-menu notifications">
 								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
 								<li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
@@ -101,9 +87,6 @@
 								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
-						<!-- <li>
-							<a class="update-pro" href="#downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-						</li> -->
 					</ul>
 				</div>
 			</div>
@@ -138,31 +121,24 @@
 		</div>
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
+
+
 		<div class="main">
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-
-					<div class="row">
-
-						<div class="col-md-2" >
+                    <div class="row">
+                        <div class="col-md-2" >
                             <div style="height:40px;width: 100%;margin-top: 10px;margin-bottom: 10px">
-                                <span style="font-size: 25px">Choose ppt</span>
+                                <span style="font-size: 25px">选择PPT</span>
                                 <a>
                                     <button  onclick="foldAdd()"><</button>
                                     <button  onclick="foldSub()">></button>
                                 </a>
-
                             </div>
-
-                            <div style="width:100%;height:450px;background-color:white;margin-top:0px;" id="a">
-
-
-							</div>
-
-
+                            <div style="width:100%;height:230px;background-color:white;margin-top:0px;" id="a"></div>
                             <div>
-                               <button style="width: 100%;margin-top: 8px" onclick="upload()" > Upload PPT</button>
+                               <button style="width: 100%;margin-top: 8px" onclick="upload()" > 上传PPT</button>
                             </div>
                             <script>
                                 function upload() {
@@ -170,24 +146,19 @@
                                 }
                             </script>
 						</div>
-
 						<div class="col-md-8" >
 							<div style="width:100%;height: 650px;">
 								<!--添加弹幕-->
 								<div id="danmu" >
-								<div class="background-picture" style="width:100%;height:650px;background-size: 100% 100%;
-		background-repeat: no-repeat;  background-image:url(static/img/5.jpg)"  id="ppt_hold">
-		<div class="col-md-6" style="width=50%;height:650px;float:left" >
-			<button id="pic_left" style="height:650px;width:100%;background:none;border:none;outline:none" onclick="picChangeLeft(this)"></button>
-		</div>
-		<div class="col-md-6" style="width:50%;height:650px;float:left" >
-			<button id="pic_right" style="height:650px;width:100%;background:none;border:none;outline:none" onclick="picChangeRight(this)"></button>
-		</div>
-	</div>
-
-
-								</div>
-
+								<div class="background-picture" style="width:100%;height:650px;background-size: 100% 100%;background-repeat: no-repeat;  background-image:url(static/img/5.jpg)"  id="ppt_hold">
+                                    <div class="col-md-6" style="width=50%;height:650px;float:left" >
+                                        <button id="pic_left" style="height:650px;width:100%;background:none;border:none;outline:none" onclick="picChangeLeft(this)"></button>
+                                    </div>
+                                    <div class="col-md-6" style="width:50%;height:650px;float:left" >
+                                        <button id="pic_right" style="height:650px;width:100%;background:none;border:none;outline:none" onclick="picChangeRight(this)"></button>
+                                    </div>
+                                </div>
+                                </div>
                                 <div style="height: 40px;line-height: 40px;text-align: center;position: absolute;top: 650px;left: 45%;">
                                     <button style="width: 22px;height: 25px;line-height: 10px;text-align: center" onclick="picChangeLeft(this)">< </button>
                                     <div class="ipt-box" style="display:inline-block">
@@ -196,8 +167,6 @@
                                     </div>
                                     <button style="width: 22px;height: 25px;line-height: 10px;text-align: center" onclick="picChangeRight(this)"> ></button>
                                 </div>
-
-
                                 <div class="text-center ctr" style="position: absolute;top:690px;margin: 5px;">
                                     <button type="button"  onclick="resumer() ">开始</button>&nbsp;
                                     <button type="button"  onclick="showBarrage() ">重放</button>
@@ -227,14 +196,13 @@
 						</div>
 						<div class="col-md-2" style="padding-left:16px;padding-right: -10px" >
                             <div>
-                                <h3> barrage-list</h3>
+                                <h3> 弹幕列表</h3>
                             </div>
-							<div  id="div1" style="width:80%;height:450px;background-color:white;margin-top:0px;overflow-y:auto">
+							<div  id="div1" style="width:100%;height:450px;background-color:white;margin-top:0px;overflow-y:auto">
 								<p id="danmu_list" style="text-align:left;	word-wrap: break-word;word-break: break-all"></p>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->
@@ -242,7 +210,6 @@
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
 	</div>
-
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="static/vendor/jquery/jquery.min.js"></script>
@@ -262,13 +229,8 @@
 //添加js文件--
 
 
-
 (function(){
 $("#danmu").danmu({
-	// left:$("#danmuarea").offset().left,
-	// top:$("#danmuarea").offset().top,
-	// height: 445,
- //    width: 800,
 	left:0,
 	top:0,
 	height:"100%",
@@ -281,37 +243,27 @@ $("#danmu").danmu({
 }
   );
 })(jQuery);
+    query();
+    timedCount();
+    var first=true;
 
-
-query();
-timedCount();
-
-
-var first=true;
-
-function timedCount()
-{
+function timedCount() {
    $("#time").text($('#danmu').data("nowtime"));
-
-t=setTimeout("timedCount()",50)
-
-}
-
-
+   t=setTimeout("timedCount()",50);
+    }
 
 function starter(){
-
   $('#danmu').danmu('danmu_start');
-
 }
-function pauser(){
 
+function pauser(){
   $('#danmu').danmu('danmu_pause');
 }
-function resumer(){
 
+function resumer(){
   $('#danmu').danmu('danmu_resume');
 }
+
 function stoper(){
   $('#danmu').danmu('danmu_stop');
 }
@@ -325,16 +277,16 @@ function getpaused(){
 }
 
 function add(){
-var newd=
-{ "text":"new2" , "color":"green" ,"size":"1","position":"0","time":60};
-
+var newd={"text":"new2" , "color":"green" ,"size":"1","position":"0","time":60};
   $('#danmu').danmu("add_danmu",newd);
 }
+
 function insert(){
   var newd= { "text":"new2" , "color":"green" ,"size":"1","position":"0","time":50};
   str_newd=JSON.stringify(newd);
   $.post("stone.php",{danmu:str_newd},function(data,status){alert(data)});
 }
+
 function query() {
   $.get("query.php",function(data,status){
      var danmu_from_sql=eval(data);
@@ -364,12 +316,11 @@ function ajaxSendBarrage(text,barrage_time) {
         }
 
 function ajaxShowDbBarrage() {
-    var file_path = $('#ppt_hold').css('background-image')
-    var splits = file_path.split('/')
-    var ppt_name = splits[splits.length-2]
-    var data = {
-    "ppt_name":ppt_name
-    }
+    var file_path = $('#ppt_hold').css('background-image');
+    var splits = file_path.split('/');
+    var ppt_name = splits[splits.length-2];
+    var data = {"ppt_name":ppt_name
+    };
         $.ajax({
         type: 'POST',
         url: './api/ppt_barrage/db',
@@ -377,13 +328,8 @@ function ajaxShowDbBarrage() {
         data: data,
         dataType: 'json',
         success: function(data) {
-{#        var a = JSON.parse(data);#}
-{#        document.write(JSON.parse(data))#}
-{#            document.write(data['path'])#}
-{#            document.write(data['path'])#}
             var barrages = data['barrages'];
             for(var barrage in barrages){
-{#                document.write(barrages[barrage].barrage_text);#}
                 var barrage_text = barrages[barrage].barrage_text;
                 var barrage_time = barrages[barrage].barrage_time;
                 var oPNode = document.getElementById('danmu_list');//获取p节点的对象
@@ -421,9 +367,7 @@ function send(){
   min=min>9?min:"0"+min;
   var sec=today.getSeconds();
     sec=sec>9?sec:"0"+sec;
-
   var s=today.getFullYear()+"-"+month+"-"+date+" "+hour+":"+min+":"+sec+" ";
-
 
   ajaxSendBarrage(text,s);
   var oPNode = document.getElementById('danmu_list');//获取p节点的对象
@@ -441,15 +385,10 @@ e.scrollTop=e.scrollHeight;
 }
 var s=setInterval("sc()",200);
 
-
-
-
-
 function op(){
 var op=document.getElementById('op').value;
  $('#danmu').data("opacity",op);
 }
-
 
 function changehide() {
 	var op = document.getElementById('op').value;
@@ -467,7 +406,6 @@ function changehide() {
 	}
 }
 
-
 function settime(){
 	var t=document.getElementById("set_time").value;
 	t=parseInt(t)
@@ -482,10 +420,6 @@ function settime(){
      */
 
 function picChangeLeft(which) {
-{#var input=document.getElementById("input");#}
-{#    input.value=pic_num;#}
-
-
     var ppt_hold = document.getElementById('ppt_hold');
     var title = ppt_hold.getAttribute('title');
     var pic_num = parseInt(title);
@@ -504,20 +438,16 @@ function picChangeLeft(which) {
     $('#ppt_hold').css('background-image',command);
     var input=document.getElementById("input");
     input.value=pic_num + 1;
-    //alert(title);
-     //alert(pic_num);
 }
     /*
     PPT页数向右翻页
      */
 function picChangeRight(which) {
-{#     var input=document.getElementById("input");#}
-{#    input.value=pic_num;#}
+
 
     var ppt_hold = document.getElementById('ppt_hold');
     var title = ppt_hold.getAttribute('title');
     var pic_num = parseInt(title);
-    //alert(pic_num);
     if(pic_num + 1 >= folds_size){
         pic_num = folds_size-1;
     }
@@ -532,11 +462,9 @@ function picChangeRight(which) {
     var command = './' + oppo_path;
     command = 'url("' + command + '")';
     $('#ppt_hold').css('background-image',command);
-    //alert(title);
     var input=document.getElementById("input");
     input.value=pic_num + 1;
 }
-
 
         var path;
         var files_number;
@@ -552,12 +480,7 @@ function picChangeRight(which) {
         data: data,
         dataType: 'json',
         success: function(data) {
-{#        var a = JSON.parse(data);#}
-{#        document.write(JSON.parse(data))#}
-{#            document.write(data['path'])#}
-{#            document.write(data['path'])#}
             obj_data = data
-
         }
         });
         }
@@ -589,10 +512,6 @@ function picChangeRight(which) {
                     filename_and_number[file_name] = obj_data[file_name]
                     the_p.setAttribute('href',path);
                     the_p.setAttribute("style","width:100%;border:0;height:50px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap");
-{#                    if(button.innerHTML.length>=10){#}
-{#                        button.innerHTML.slice(0,9)='...';alert(button.innerHTML);#}
-{#                    }#}
-
                     the_p.onclick = function (){
                         choosePPT(this);
                     };
@@ -607,10 +526,6 @@ function picChangeRight(which) {
     <script>
 
          function choosePPT(which) {
-             var input=document.getElementById("input");
-             input.setAttribute("value","1");
-             //input.html(1);
-
              var file_path = which.getAttribute('href');
              var splits = file_path.split('/');
              var filename = splits[splits.length-1];
@@ -623,6 +538,8 @@ function picChangeRight(which) {
              $('#danmu_list').empty();
              ajaxShowDbBarrage();
              $('.total_page').html("/"+folds_size);
+             var input=document.getElementById("input");
+            input.value=1;
          }
          function showDbBarrage(barrage_text){
             var text = barrage_text;
@@ -631,7 +548,6 @@ function picChangeRight(which) {
             var time = $('#danmu').data("nowtime")+5;
             var size =document.getElementById('text_size').value;
             var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+'}';
-{#            $.post("stone.php",{danmu:text_obj});#}
             var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+',"isnew":""}';
             var new_obj=eval('('+text_obj+')');
             $('#danmu').danmu("add_danmu",new_obj);
@@ -641,7 +557,6 @@ function picChangeRight(which) {
              $('#danmu_list').empty();
              ajaxShowDbBarrage();
          }
-
 
          function foldAdd() {
                 if (ppt_catalog_num + 1 == ppt_catalog_total){
@@ -654,7 +569,6 @@ function picChangeRight(which) {
                 $('#a').empty();
                 a.appendChild(ul_array[ppt_catalog_num]);
                 var btn=document.getElementByTagName('button');
-
 
             }
             foldSub();
