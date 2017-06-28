@@ -1,6 +1,6 @@
 from app.main_page import main_page as main_page_Blueprint
 from app.models.BaseClass import BaseClass
-from flask import  render_template,abort
+from flask import  render_template,abort,request
 from flask import jsonify
 from config import CLASS_NUMBER
 from app.models.BaseUser import User
@@ -50,6 +50,9 @@ def data():
 
 @main_page_Blueprint.route('/front/data')
 def front_data():
+    class_number = request.args.get('class_number')
+    if type(class_number) != int:
+        class_number = int(class_number)
     Class = BaseClass(class_number)
     list_sign_students = Class.list_sign_students
     list_unsign_students = Class.list_unsign_students
