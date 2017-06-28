@@ -16,10 +16,10 @@ def index():
 @admin.route('/list',methods = ['POST','GET'])
 def list():
     # student_name = '程东东'
-    if request.method == 'POST':
-        student_name = request.form['student_name']
-    # if request.method == 'GET':
-    #     student_name = request.args.get('student_name')
+    # if request.method == 'POST':
+    #     student_name = request.form['student_name']
+    if request.method == 'GET':
+        student_name = request.args.get('student_name')
     student = Students.objects(student_name=student_name)
     print(student)
     print(type(student))
