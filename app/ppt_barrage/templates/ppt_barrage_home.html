@@ -192,7 +192,7 @@
                                     <button style="width: 22px;height: 25px;line-height: 10px;text-align: center" onclick="picChangeLeft(this)">< </button>
                                     <div class="ipt-box" style="display:inline-block">
                                         <input type="text" value="1"  id="input" style="width: 41px;height: 22px;line-height: 25px;font-size: 10px;border: 1px solid #d1ded9;outline: 0px;text-align: center;margin-right: 1px;">
-                                        <span class="total_page">/&nbsp;9</span>
+                                        <span class="total_page">/</span>
                                     </div>
                                     <button style="width: 22px;height: 25px;line-height: 10px;text-align: center" onclick="picChangeRight(this)"> ></button>
                                 </div>
@@ -482,13 +482,13 @@ function settime(){
      */
 
 function picChangeLeft(which) {
-var input=document.getElementById("input");
-    input.value=pic_num;
+{#var input=document.getElementById("input");#}
+{#    input.value=pic_num;#}
 
 
     var ppt_hold = document.getElementById('ppt_hold');
     var title = ppt_hold.getAttribute('title');
-     var pic_num = parseInt(title);
+    var pic_num = parseInt(title);
     if(pic_num - 1 < 0){
         pic_num = 0;
     }
@@ -509,8 +509,8 @@ var input=document.getElementById("input");
     PPT页数向右翻页
      */
 function picChangeRight(which) {
-     var input=document.getElementById("input");
-    input.value=pic_num;
+{#     var input=document.getElementById("input");#}
+{#    input.value=pic_num;#}
 
     var ppt_hold = document.getElementById('ppt_hold');
     var title = ppt_hold.getAttribute('title');
@@ -530,6 +530,7 @@ function picChangeRight(which) {
     command = 'url("' + command + '")';
     $('#ppt_hold').css('background-image',command);
     //alert(title);
+
 }
 
 
@@ -613,6 +614,7 @@ function picChangeRight(which) {
              ppt_hold.setAttribute('title',1);
              $('#danmu_list').empty();
              ajaxShowDbBarrage();
+             $('.total_page').html("/"+folds_size);
          }
          function showDbBarrage(barrage_text){
             var text = barrage_text;
@@ -644,7 +646,7 @@ function picChangeRight(which) {
                 $('#a').empty();
                 a.appendChild(ul_array[ppt_catalog_num]);
                 var btn=document.getElementByTagName('button');
-                 //btn.setAttribute('height','150px');
+
 
             }
             foldSub();
