@@ -502,6 +502,8 @@ function picChangeLeft(which) {
     var command = './' + oppo_path;
     command = 'url("' + command + '")';
     $('#ppt_hold').css('background-image',command);
+    var input=document.getElementById("input");
+    input.value=pic_num + 1;
     //alert(title);
      //alert(pic_num);
 }
@@ -522,6 +524,7 @@ function picChangeRight(which) {
     else{
         pic_num +=1 ;
     }
+
     ppt_hold.setAttribute('title',pic_num.toString());
     var url_path = $('#ppt_hold').css('background-image');
     var oppo_path = url_path.match('ppt_barrage/(.*?)"')[1];
@@ -530,7 +533,8 @@ function picChangeRight(which) {
     command = 'url("' + command + '")';
     $('#ppt_hold').css('background-image',command);
     //alert(title);
-
+    var input=document.getElementById("input");
+    input.value=pic_num + 1;
 }
 
 
@@ -603,6 +607,10 @@ function picChangeRight(which) {
     <script>
 
          function choosePPT(which) {
+             var input=document.getElementById("input");
+             input.setAttribute("value","1");
+             //input.html(1);
+
              var file_path = which.getAttribute('href');
              var splits = file_path.split('/');
              var filename = splits[splits.length-1];
@@ -611,7 +619,7 @@ function picChangeRight(which) {
              var command = 'url(' + set_path + ')';
              $('#ppt_hold').css('background-image',command);
              var ppt_hold = document.getElementById('ppt_hold');
-             ppt_hold.setAttribute('title',1);
+             ppt_hold.setAttribute('title','0');
              $('#danmu_list').empty();
              ajaxShowDbBarrage();
              $('.total_page').html("/"+folds_size);
