@@ -2,7 +2,9 @@ import os
 import time
 import json
 from flask import jsonify
-from flask import Flask, render_template, request,flash
+from flask import Flask
+from flask import render_template
+from flask import request
 from flask_bootstrap import Bootstrap
 from . import ppt_barrage as ppt_barrage_Blueprint
 from app.models.PPTBarrage import Barrage
@@ -12,9 +14,11 @@ app = Flask(__name__)
 bootstrap = Bootstrap(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER  # 设置文件上传的目标文件夹
 
+
 @ppt_barrage_Blueprint.route('/')
 def hello_world():
     return 'Hello World!'
+
 
 @ppt_barrage_Blueprint.route('/index')
 def index():
@@ -27,13 +31,16 @@ def index():
             folds.append(dirname)
     return render_template('ppt_barrage_home.html', folds=folds)
 
+
 @ppt_barrage_Blueprint.route('/upload', methods=["GET", "POST"])
 def upload_test():
     return render_template("upload.html")
 
+
 @ppt_barrage_Blueprint.route('/show', methods=["GET", "POST"])
 def show_test():
     return render_template("show.html")
+
 
 @ppt_barrage_Blueprint.route("/api/upload", methods=["GET", "POST"])
 def upload():
@@ -42,6 +49,7 @@ def upload():
     upload_msg = json.loads(msg.data.decode("utf-8"))
     errmsg = upload_msg.get("errmsg")
     return jsonify({"msg": errmsg})
+
 
 @ppt_barrage_Blueprint.route('/show_pic')
 def show_pic():
@@ -53,6 +61,7 @@ def show_pic():
         for dirname in dirnames:
             folds.append(dirname)
     return render_template('show_pic.html', folds=folds)
+
 
 @ppt_barrage_Blueprint.route('/api/info_file', methods=['POST'])
 def show_info_file():
@@ -73,6 +82,7 @@ def show_info_file():
     show_pic_info['filename'] = filename
     return jsonify(show_pic_info)
 
+
 def api_upload(app_boj, file):
     basedir = os.path.abspath(os.path.dirname(__file__))  # 获取当前项目的绝对路径
     file_dir = os.path.join(basedir, app_boj.config['UPLOAD_FOLDER'])  # 拼接成合法文件夹地址
@@ -89,6 +99,7 @@ def api_upload(app_boj, file):
     file.save(os.path.join(file_dir, fname))  #保存文件到upload目录
     ppt_pdf_pic(fname, file_name)
     return jsonify({"result": 0, "new_name": fname, "errmsg": "上传成功"})
+
 
 # 上传的ppt转为pdf再转为picture
 def ppt_pdf_pic(filename_ext,filename):
@@ -111,6 +122,7 @@ def ppt_pdf_pic(filename_ext,filename):
     result_command = os.popen(pdf_pic_command)
     result_command = result_command.read()
 
+
 @ppt_barrage_Blueprint.route('/api/ppt_barrage', methods=['POST'])
 def save_ppt_barrage():
     barrage_time = request.form.get('time')
@@ -121,6 +133,7 @@ def save_ppt_barrage():
                       ppt_name=ppt_name)
     barrage.save()
     return jsonify({"status": "ok"})
+
 
 @ppt_barrage_Blueprint.route('/api/ppt_barrage/db', methods=['POST'])
 def ppt_barrage_db():

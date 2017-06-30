@@ -1,12 +1,12 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
-from flask_mongoengine import MongoEngine,MongoEngineSessionInterface
+from flask_mongoengine import MongoEngine
+from flask_mongoengine import MongoEngineSessionInterface
 from flask_login import LoginManager
 
 UPLOAD_FOLDER = './static/doc'
 db = MongoEngine()
 login_manager = LoginManager()
-
 
 
 def create_app():
@@ -25,12 +25,10 @@ def create_app():
     app.session_interface = MongoEngineSessionInterface(db)
     db.init_app(app)
 
-
     app.secret_key = 's3cr3t'
     login_manager.session_protection = 'strong'
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
-
 
     from .main_page import main_page
     app.register_blueprint(main_page)

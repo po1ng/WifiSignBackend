@@ -1,6 +1,6 @@
 from app.models.MongodbConn import MongoPipeline
 
-class BaseClass():
+class BaseClass(object):
     # class_id,班级;class_num,课程编号
     def __init__(self, class_id):
 
@@ -15,8 +15,8 @@ class BaseClass():
     # 该班级所有学生的名单
     def calculate_students(self,class_id):
         conn = MongoPipeline()
-        conn.open_connection('web_info',username='pipi',password='123456',ip='localhost')
-        students = conn.getIds('info',{"class_num":class_id})
+        conn.open_connection('web_info', username='pipi', password='123456', ip='localhost')
+        students = conn.getIds('info', {"class_num":class_id})
         student_num = None
         list_students = []
         for student in students:
@@ -27,7 +27,7 @@ class BaseClass():
     def calculate_sign_student(self,class_id):
         conn = MongoPipeline()
         conn.open_connection('web_info', username='pipi', password='123456', ip='localhost')
-        students = conn.getIds('info',{'class_num':class_id})
+        students = conn.getIds('info', {'class_num':class_id})
         sign_student = []
         for student in students:
             if 'connect_status'in student and student['connect_status'] == 1:
@@ -45,15 +45,4 @@ class BaseClass():
 
 
 
-if __name__ == '__main__':
-    one = BaseClass(21,5,'2017-05-20')
-    num = one.total_student_num
-    print(num)
-    print(one.list_students)
-    print(one.sign_student_num)
-    print(one.list_sign_students)
-    print(one.list_unsign_students)
-    print(one.unsign_student_num)
-    judge = '万仕贤' in one.list_unsign_students
-    print(judge)
 
