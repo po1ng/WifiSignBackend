@@ -6,6 +6,7 @@ from flask_login import login_required
 from app.models.BaseUser import User
 from app.main_page import main_page as main_page_Blueprint
 from app.models.BaseClass import BaseClass
+from app.models.StudentInfo import StudentInfo
 from config import CLASS_NUMBER
 
 class_number = CLASS_NUMBER
@@ -54,19 +55,14 @@ def data():
 
 @main_page_Blueprint.route('/front/data')
 def front_data():
-    class_number = CLASS_NUMBER
+    class_id = '12'
     if request.args.get('class_number'):
-        class_number = request.args.get('class_number')
-    if type(class_number) is not None and type(class_number) is not int:
-        class_number = int(class_number)
-    base_class = BaseClass(class_number)
-    list_sign_students = base_class.list_sign_students
-    list_unsign_students = base_class.list_unsign_students
+        class_id = request.args.get('class_number')
     dic_all_students = {}
-    for student in list_sign_students:
-        dic_all_students[student] = 1
-    for student in list_unsign_students:
-        dic_all_students[student] = 0
+    students_info = StudentInfo.objects(class_id=class_id)
+    for student_info in students_info:
+        name = student_info['name']
+        dic_all_students[name] = int(student_info['status'])
     jsonp = 'callback(%s)' % str(dic_all_students)
 
     return jsonp
