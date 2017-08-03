@@ -53,7 +53,7 @@ def data():
     return jsonify(dic_all_students)
 
 
-@main_page_Blueprint.route('/front/data')
+@main_page_Blueprint.route('/student_connect_status/data')
 def front_data():
     class_id = '12'
     if request.args.get('class_number'):
@@ -63,6 +63,6 @@ def front_data():
     for student_info in students_info:
         name = student_info['name']
         dic_all_students[name] = int(student_info['status'])
-    jsonp = 'callback(%s)' % str(dic_all_students)
+    jsonp = 'callback_teacher(%s)' % str(dic_all_students)
 
     return jsonp

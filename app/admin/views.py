@@ -37,3 +37,17 @@ def list_student():
     students_dic['list'] = student_list
     jsonp = 'callback_student_info(%s)' % str(students_dic)
     return jsonp
+
+@admin.route('/student_connect_status/data')
+def data():
+    class_id = '12'
+    if request.args.get('class_number'):
+        class_id = request.args.get('class_number')
+    dic_all_students = {}
+    students_info = StudentInfo.objects(class_id=class_id)
+    for student_info in students_info:
+        name = student_info['name']
+        dic_all_students[name] = int(student_info['status'])
+    jsonp = 'callback_admin(%s)' % str(dic_all_students)
+
+    return jsonp
