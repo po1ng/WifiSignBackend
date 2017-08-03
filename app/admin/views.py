@@ -35,5 +35,5 @@ def list_student():
         student_list.append(student_dic)
 
     students_dic['list'] = student_list
-    jsonp = 'callback(%s)' % str(students_dic)
+    jsonp = 'callback_student_info(%s)' % str(students_dic)
     return jsonp
