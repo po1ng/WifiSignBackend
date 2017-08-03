@@ -18,7 +18,7 @@ def index():
 def list_student():
     if request.method == 'GET':
         student_name = request.args.get('student_name')
-    students = StudentInfo.objects(student_name=student_name)
+    students = StudentInfo.objects(name=student_name)
     students_dic = {}
     student_list = []
     for student in students:
