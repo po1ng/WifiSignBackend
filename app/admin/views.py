@@ -31,7 +31,7 @@ def list_student():
         student_dic['break_time'] = student['break_time']
         student_dic['status'] = student['status']
         student_dic['date'] = student['date']
-        students_dic['remarks'] = student['remarks']
+        student_dic['remarks'] = student['remarks']
         student_list.append(student_dic)
 
     students_dic['list'] = student_list
