@@ -35,7 +35,7 @@ def list_student():
         student_list.append(student_dic)
 
     students_dic['list'] = student_list
-    jsonp = 'callback_student_info(%s)' % str(students_dic)
+    jsonp = 'callback_info(%s)' % str(students_dic)
     return jsonp
 
 @admin.route('/student_connect_status/data')
