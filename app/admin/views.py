@@ -29,7 +29,6 @@ def list_student():
         student_dic['address_mac'] = student['address_mac']
         student_dic['connect_time'] = student['connect_time']
         student_dic['break_time'] = student['break_time']
-        student_dic['status'] = student['status']
         student_dic['date'] = student['date']
         student_dic['remarks'] = student['remarks']
         student_list.append(student_dic)
