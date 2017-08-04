@@ -99,6 +99,10 @@ def front_data():
     today_date = get_date()
     class_num = get_class_num()
     dic_all_students = {}
+    students_info_absent = StudentInfo.objects(class_id=class_id)
+    for student_info_absent in students_info_absent:
+        name = student_info_absent['name']
+        dic_all_students[name] = 0
     students_info = StudentInfo.objects(class_id=class_id, class_num=class_num, date=today_date)
     for student_info in students_info:
         name = student_info['name']
