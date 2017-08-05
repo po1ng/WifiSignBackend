@@ -38,16 +38,17 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate:
-        user = User(email=form.email.data,
-                    username=form.username.data,
-                    class_number=form.class_number.data,
-                    nickname=form.nickname.data)
-        user.password = form.password.data
         if form.validate_email(form.email.data):
             return jsonify(response_dict(EMAIL_USED))
         elif form.validate_nickname(form.nickname.data):
             return jsonify(response_dict(NICKNAME_USED))
         else:
+            user = User(email=form.email.data,
+                        username=form.username.data,
+                        class_number=form.class_number.data,
+                        nickname=form.nickname.data)
+            user.password = form.password.data
+            user.save()
             return jsonify(response_dict(SUCCESS))
     else:
         return '注册失败！'
