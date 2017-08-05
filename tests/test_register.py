@@ -50,6 +50,6 @@ class RegisterTestCase(TestCase):
             'csrf_token': False
         }
         response = requests.post(data=data, url='http://127.0.0.1:8847/auth/register').json()
-        # assert response['status'] == 0
+
 if __name__ == '__main__':
     unittest.main()
