@@ -12,3 +12,6 @@ constants = {
     FORM_INVALID: '表单不合法',
     LOGIN_FAIL: '用户名或密码错误',
 }
+
+TEST_HOST = '127.0.0.1'
+TEST_PORT = 8847
