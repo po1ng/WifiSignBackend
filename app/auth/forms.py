@@ -36,6 +36,7 @@ class RegistrationForm(Form):
                            Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
                            'Nickname must have only letters, '
                            'numbers, dots or underscores')])
+    class_id = StringField(validators=[DataRequired()])
 
     def validate_email(self, email):
         if User.objects(email=email).first():
