@@ -15,8 +15,6 @@ from app.models.BaseUser import User
 class LoginForm(Form):
     email = StringField('Email', validators=[DataRequired(), Length(1,64), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Keep me logged in')
-    submit = SubmitField('Log in')
 
 
 class RegistrationForm(Form):
@@ -30,7 +28,6 @@ class RegistrationForm(Form):
                              validators=[DataRequired(),
                              EqualTo('password2', 'Password must match')])
     password2 = PasswordField('Confirm Password', validators=[DataRequired()])
-    submit = SubmitField('Register')
     class_number = StringField('Class Number',
                                validators=[DataRequired(),
                                Regexp('^[0-9]',0,'Class number must have only numbers')])
