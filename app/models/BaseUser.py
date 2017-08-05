@@ -10,7 +10,7 @@ class User(UserMixin, db.Document):
     username = db.StringField()
     password_hash = db.StringField()
     email = db.StringField()
-    class_number = db.StringField()
+    class_id = db.StringField()
     nickname = db.StringField()
     last_seen = db.DateTimeField(default=datetime.now())
 

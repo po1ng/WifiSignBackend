@@ -36,7 +36,7 @@ def register():
         else:
             user = User(email=form.email.data,
                         username=form.username.data,
-                        class_number=form.class_number.data,
+                        class_id=form.class_id.data,
                         nickname=form.nickname.data)
             user.password = form.password.data
             user.save()
