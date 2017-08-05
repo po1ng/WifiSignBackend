@@ -8,7 +8,7 @@ from flask_login import logout_user
 from flask_login import login_required
 from app.utils import response_dict
 from app.models.BaseUser import User
-from app.constants import EMAIL_USED, NICKNAME_USED, SUCCESS
+from app.constants import EMAIL_USED, NICKNAME_USED, SUCCESS, FORM_INVALID
 from . import auth as auth_Blueprint
 
 
@@ -51,7 +51,7 @@ def register():
             user.save()
             return jsonify(response_dict(SUCCESS))
     else:
-        return '注册失败！'
+        return jsonify(response_dict(FORM_INVALID))
 
 
 
