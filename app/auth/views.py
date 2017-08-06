@@ -2,7 +2,7 @@ from flask import current_app
 from flask import jsonify
 from flask import session
 from .forms import LoginForm, RegistrationForm
-from flask import render_template
+from flask import render_template, request
 from flask.ext.principal import identity_changed, AnonymousIdentity, Identity
 from flask_login import current_user
 from flask_login import login_user
@@ -29,35 +29,36 @@ def index():
 def register():
     form = RegistrationForm()
     if form.validate:
-        if form.validate_email(form.email.data):
-            return jsonify(response_dict(EMAIL_USED))
-        elif form.validate_nickname(form.nickname.data):
-            return jsonify(response_dict(NICKNAME_USED))
+        if form.validate_email(request.args.get('email')):
+            return 'callback_register(%s)' % str(response_dict(EMAIL_USED))
+        elif form.validate_nickname(request.args.get('nickname')):
+
+            return 'callback_register(%s)' % str(response_dict(NICKNAME_USED))
         else:
-            user = User(email=form.email.data,
-                        username=form.username.data,
-                        class_id=form.class_id.data,
-                        nickname=form.nickname.data)
-            user.password = form.password.data
+            user = User(email=request.args.get('email'),
+                        username=request.args.get('username'),
+                        class_id=request.args.get('class_id'),
+                        nickname=request.args.get('nickname'))
+            user.password = request.args.get('password')
             user.save()
-            return jsonify(response_dict(SUCCESS))
+            return 'callback_register(%s)' % str(response_dict(SUCCESS))
     else:
-        return jsonify(response_dict(FORM_INVALID))
+        return 'callback_register(%s)' % str(response_dict(FORM_INVALID))
 
 
 @auth_Blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate:
-        user = User.objects(email=form.email.data).first()
-        if user is not None and user.verify_password(form.password.data):
+        user = User.objects(email=request.args.get('email')).first()
+        if user is not None and user.verify_password(request.args.get('password')):
             login_user(user)
             identity_changed.send(current_app._get_current_object(),
                                   identity=Identity(user.id))
-            return jsonify(response_dict(SUCCESS))
+            return 'callback_login(%s)' % str(response_dict(SUCCESS))
         else:
-            return jsonify(response_dict(LOGIN_FAIL))
-    return jsonify(response_dict(FORM_INVALID))
+            return 'callback_login(%s)' % str(response_dict(LOGIN_FAIL))
+    return 'callback_login(%s)' % str(response_dict(FORM_INVALID))
 
 
 @auth_Blueprint.route('/logout')
