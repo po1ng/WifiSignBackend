@@ -70,4 +70,3 @@ def logout():
     identity_changed.send(current_app._get_current_object(),
                           identity=AnonymousIdentity())
     return jsonify(response_dict(SUCCESS))
-
