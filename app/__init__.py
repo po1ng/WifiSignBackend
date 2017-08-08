@@ -28,13 +28,14 @@ def create_app():
         'username':mongo_username,
         'password':mongo_password
     }
-    app.session_interface = MongoEngineSessionInterface(db)
+
     db.init_app(app)
 
     app.secret_key = app_secret_key
+    login_manager.init_app(app)
     login_manager.session_protection = 'strong'
     login_manager.login_view = 'auth.login'
-    login_manager.init_app(app)
+
 
     from .main_page import main_page
     app.register_blueprint(main_page)

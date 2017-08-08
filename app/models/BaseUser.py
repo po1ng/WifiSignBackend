@@ -7,6 +7,7 @@ from app import db
 
 
 class User(UserMixin, db.Document):
+
     username = db.StringField()
     password_hash = db.StringField()
     email = db.StringField()

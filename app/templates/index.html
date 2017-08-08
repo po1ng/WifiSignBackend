@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>网信院学生签到系统</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./assets/css/linearicons/style.css">
+	<link rel="stylesheet" href="./assets/css/chartist/css/chartist-custom.css">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="./assets/css/main.css">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="./assets/css/demo.css">
+	<link rel="stylesheet" href="./static/css/main.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<style>
+	
+        }
+	</style>
+</head>
+<body>
+	<!-- WRAPPER -->
+<div id="wrapper">
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="brand" style="padding: 15px">
+				<a href="index.html"><img src="./assets/img/wa.jpg" alt="小蛙科技" class="img-responsive logo" width="50px" height="50px"></a>
+			</div>
+			<div class="container-fluid">
+				<div class="navbar-btn">
+					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+				</div>
+				<form class="navbar-form navbar-left">
+				</form>
+				<div class="navbar-btn navbar-btn-right">
+					<a class="btn btn-success update-pro" href="#downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>				</div>
+				<div id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+								<i class="lnr lnr-alarm"></i>
+								<span class="badge bg-danger">5</span>							</a>
+							<ul class="dropdown-menu notifications">
+								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
+								<li><a href="#" class="more">See all notifications</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="lnr lnr-question-circle"></i> <span>Help</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Basic Use</a></li>
+								<li><a href="#">Working With Data</a></li>
+								<li><a href="#">Security</a></li>
+								<li><a href="#">Troubleshooting</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span id="li-ten">管理员界面</span></a>
+					  </li>
+						<!-- <li>
+							<a class="update-pro" href="#downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</nav>
+	<!-- END NAVBAR -->
+	<!-- LEFT SIDEBAR -->
+	<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+						<li><a href="javascript:void(0);" id="li-one"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+
+						<li><a href="javascript:void(0);" id="li-two"><i class="lnr lnr-code"></i> <span>Elements</span></a></li>
+
+						<li><a href="javascript:void(0);" id="li-three"><i class="lnr lnr-chart-bars"></i> <span>Charts</span></a></li>
+
+						<li><a href="javascript:void(0);" id="li-four"><i class="lnr lnr-cog"></i> <span>Panels</span></a></li>
+
+						<li><a href="javascript:void(0);" id="li-five"><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
+
+						<li><a href="javascript:void(0);" data-toggle="collapse" id="li-six"><i class="lnr lnr-file-empty"></i> <span>PPT Page</span></a></li>
+
+						<li><a href="javascript:void(0);" id="li-seven"><i class="lnr lnr-dice"></i> <span>Tables</span></a></li>
+
+						<li><a href="javascript:void(0);" id="li-eight"><i class="lnr lnr-text-format"></i> <span>Typography</span></a></li>
+
+						<li><a href="javascript:void(0);" id="li-nine"><i class="lnr lnr-linearicons"></i> <span>Icons</span></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	<!-- END LEFT SIDEBAR -->
+	<!-- MAIN -->
+	<div class="main" id="matter1">
+			<!-- MAIN CONTENT -->
+			<div class="main-content" >
+				<div class="container-fluid" >
+					<!-- OVERVIEW -->
+					<div class="panel panel-headline" id="content">
+						<div class="panel-heading" style="width:800px">
+							<h3 class="panel-title">Weekly Overview</h3>
+							<h3 class="panel-title">Period: June 9, 2017 </h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+							</div>
+							<div class="row">
+								<div class='col-md-9 col-sm-9 col-xs-9'>
+									<div id="headline-chart" class="ct-chart">
+									<!--添加人员名单-->
+										<div class='col-md-12 col-sm-12 col-xs-12' style='padding:30px'>
+											<h2 style='display:inline;'> <img src="./assets/img/群众.png" height="50" width="50"/>&emsp;人员名单</h2>
+											<div>
+												<table class="table table-striped table-hover">
+													<thead>
+													<tr>
+														<th>姓名</th>
+														<th>姓名</th>
+														<th>姓名</th>
+														<th>姓名</th>
+														<th>姓名</th>
+														<th>姓名</th>
+														<th>姓名</th>
+													</tr>
+													</thead>
+													<tbody id='all-list'>
+													</tbody>
+												</table>
+											</div>
+										<!--添加人员名单结束-->
+										<hr />
+										<h2><img src="./assets/img/图表.png" height="50" width="50"/> 到课率</h2>					
+										</div>
+									</div>
+								</div>
+								<div class='col-md-3 col-sm-3 col-xs-3' style="overflow:hidden">
+									<img src="./assets/img/Lion.jpg" alt="" width="300" height="350" style="margin:30px">
+									<h3 style="text-align:center">Jack Brown</h3>
+									<h4 style="text-align:center">Jack Name</h4>
+									<h4 style="text-align:center">123456789@gmail.com</h4>
+								</div>
+							</div>
+						</div>
+						<!-- END OVERVIEW -->
+						<div class="row">
+						<div class="col-md-6">
+							<!-- RECENT PURCHASES -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">Recent Purchases</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body no-padding">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Order No.</th>
+												<th>Name</th>
+												<th>Amount</th>
+												<th>Date &amp; Time</th>
+												<th>Status</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><a href="#">763648</a></td>
+												<td>Steve</td>
+												<td>$122</td>
+												<td>Oct 21, 2016</td>
+												<td><span class="label label-success">COMPLETED</span></td>
+											</tr>
+											<tr>
+												<td><a href="#">763649</a></td>
+												<td>Amber</td>
+												<td>$62</td>
+												<td>Oct 21, 2016</td>
+												<td><span class="label label-warning">PENDING</span></td>
+											</tr>
+											<tr>
+												<td><a href="#">763650</a></td>
+												<td>Michael</td>
+												<td>$34</td>
+												<td>Oct 18, 2016</td>
+												<td><span class="label label-danger">FAILED</span></td>
+											</tr>
+											<tr>
+												<td><a href="#">763651</a></td>
+												<td>Roger</td>
+												<td>$186</td>
+												<td>Oct 17, 2016</td>
+												<td><span class="label label-success">SUCCESS</span></td>
+											</tr>
+											<tr>
+												<td><a href="#">763652</a></td>
+												<td>Smith</td>
+												<td>$362</td>
+												<td>Oct 16, 2016</td>
+												<td><span class="label label-success">SUCCESS</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer">
+									<div class="row">
+										<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
+										<div class="col-md-6 text-right"><a href="#" class="btn btn-primary">View All Purchases</a></div>
+									</div>
+								</div>
+							</div>
+							<!-- END RECENT PURCHASES -->
+						</div>
+						<div class="col-md-6">
+							<!-- MULTI CHARTS -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">Projection vs. Realization</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div id="visits-trends-chart" class="ct-chart"></div>
+								</div>
+							</div>
+							<!-- END MULTI CHARTS -->
+						</div>
+					</div>
+						<div class="row">					
+						<!--添加到课率高的学生-->
+						<div class='col-md-3 col-sm-3 col-xs-6' style="margin-top: 10px;">
+							<div class='panel panel-default' style='width: 100%;height: 300px' id='chart2'>
+								<div class='panel-heading' style='height:80px;'>
+									<h3><img src="./assets/img/学生.png" height="50" width="50"/> 到课率较高的学生</h3>
+								</div>
+								<div class='panel-body' style='height: 220px;overflow: auto;'>
+									<ul class='list-group'>
+										<li class="list-group-item">
+											张晓媛
+										</li>
+										<li class="list-group-item">
+											谢思雨
+										</li>
+										<li class="list-group-item">
+											宁云泽
+										</li>
+										<li class="list-group-item">
+											吴燕玲
+										</li>
+										<li class="list-group-item">
+
+										</li>
+										<li class="list-group-item">
+
+										</li>
+										<li class="list-group-item">
+											
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--添加结束-->		
+						<div class='col-md-3 col-sm-3 col-xs-6' style="margin-top: 10px;">
+							<div class='panel panel-default' style='width:100%;height:300px' id='chart2'>
+								<div class='panel-heading' style='height:80px;'>
+									<h3><img src="./assets/img/未签到.png" height="50" width="50"/> 未到人员名单</h3>
+								</div>
+								<div class='panel-body' style='height:220px;overflow:auto;'>
+									<ul class='list-group'>
+										<li class="list-group-item">
+											李雪峰
+										</li>
+										<li class="list-group-item">
+											张正龙
+										</li>
+										<li class="list-group-item">
+											马龙
+										</li>
+										<li class="list-group-item">
+											刘天云
+										</li>
+										<li class="list-group-item">
+
+										</li>
+										<li class="list-group-item">
+
+										</li>
+										<li class="list-group-item">
+
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>						
+						<!--添加发言情况-->		
+						<div class='col-md-6 col-sm-6 col-xs-12 'style="margin-top: 10px;">
+							<div class='panel panel-default' style='width:100%;height:300px' id='chart3'>
+								<div class='panel-heading' style='height:80px;'>
+									<h3><img src="./assets/img/说话.png" height="50" width="50"/> 想说的话</h3>
+								</div>
+								<div class='panel-body' style='height:220px;overflow:auto;'>
+									<ul class='list-group'>
+										<li class="list-group-item"><i class='fa  fa-female'></i>&emsp;老师课讲得不错</li>
+										<li class="list-group-item"><i class='fa  fa-male'></i>&emsp;老师课讲得不错</li>
+										<li class="list-group-item"><i class='fa  fa-female'></i>&emsp;老师课讲得不错</li>
+										<li class="list-group-item"><i class='fa  fa-male'></i>&emsp;老师课讲得不错</li>
+										<li class="list-group-item"><i class='fa  fa-female'></i>&emsp;老师课讲得不错</li>
+										<li class="list-group-item"><i class='fa  fa-male'></i>&emsp;老师课讲得不错</li>
+										<li class="list-group-item"><i class='fa  fa-female'></i>&emsp;老师课讲得不错</li>
+										<li class="list-group-item"><i class='fa  fa-male'></i>&emsp;老师课讲得不错</li>
+										<li class="list-group-item"><i class='fa  fa-female'></i>&emsp;老师课讲得不错</li>
+										<li class="list-group-item"><i class='fa  fa-male'></i>&emsp;老师课讲得不错</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					<!--添加发言结束-->
+						</div>
+
+					</div>
+				</div>
+			<!-- END MAIN CONTENT -->
+			</div>
+		<!-- END MAIN -->
+		<div class="clearfix">
+		</div>
+	</div>
+	<div class="main"id="matter10" style="display:none;">
+		<div style="height: 110px;background-color: #cde2e2;padding-top:13px">
+			<div class="col-md-2" >
+				<h2 >选择班级:</h2>
+			</div>
+			<div class="col-md-2 col-sm-6 col-xs-12" style="height: 100px"><a href="javascript:void(0)" onclick="changeClass(this)"><h2 >1718011</h2></a></div>
+			<div class="col-md-2 col-sm-6 col-xs-12" style="height: 100px"><a href="javascript:void(0)" onclick="changeClass(this)"><h2 >1718012</h2></a></div>
+			<div class="col-md-2 col-sm-6 col-xs-12" style="height: 100px"><a href="javascript:void(0)" onclick="changeClass(this)"><h2 >1718021</h2></a></div>
+			<div class="col-md-2 col-sm-6 col-xs-12" style="height: 100px"><a href="javascript:void(0)" onclick="changeClass(this)"><h2 >1718028</h2></a></div>
+		</div>
+		<!--添加人员名单-->
+		<div style="margin-top: 0px;background-color: white" id="classList" class='col-md-12 col-sm-12 col-xs-12' style='padding: 30px; position: static' >
+                <h2 style='display: inline;'> <img src="./assets/img/群众.png" height="50" width="50"/>&emsp;<span id="class" style="font-size:35px;">1718011</span>班人员名单：</h2>
+				<div>
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>姓名</th>
+								<th>姓名</th>
+								<th>姓名</th>
+								<th>姓名</th>
+								<th>姓名</th>
+								<th>姓名</th>
+								<th>姓名</th>
+							</tr>
+						</thead>
+						<tbody id='all-list-admin'>
+						</tbody>
+					</table>
+				</div>
+			<!--添加人员名单结束-->
+		</div>
+		<div style="margin-top: 0px;background-color: white;display: none " id="clone" class='col-md-12 col-sm-12 col-xs-12' style='padding: 30px; position: static' >
+                <h1 style='text-align: center'>学生签到信息</h1>
+				<div>
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>姓名</th>
+								<th>学号</th>
+								<th>班级</th>
+								<th>MAC地址</th>
+								<th>连接时间</th>
+								<th>断开时间</th>
+								<th>日期</th>
+								<th>备注</th>
+							</tr>
+						</thead>
+						<tbody id='message-list' >
+						</tbody>
+					</table>
+				</div>
+			<!--添加人员名单结束-->
+		</div>
+	</div>
+	<div class="main" id="matter2" style="display: none">敬请期待</div>
+	<div class="main" id="matter3" style="display: none">敬请期待</div>
+	<div class="main" id="matter4" style="display: none">敬请期待</div>
+	<div class="main" id="matter5" style="display: none">敬请期待</div>
+	<div class="main" id="matter6" style="display: none">
+		<div class="main-content">
+			<div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2" >
+                        <div style="height:40px;width: 100%;margin-top: 10px;margin-bottom: 10px">
+                            <span style="font-size: 25px">选择PPT</span>
+                            <a>
+                                <button  onclick="foldAdd()"><</button>
+                                <button  onclick="foldSub()">></button>
+                            </a>
+                        </div>
+                        <div style="width:100%;height:230px;background-color:white;margin-top:0px;" id="a"></div>
+                        <div>
+                            <button style="width: 100%;margin-top: 8px" onclick="upload()" > 上传PPT</button>
+                        </div>
+                            <script>
+                                function upload() {
+                                    window.open("http://127.0.0.1:8847/ppt_barrage/upload");
+                                }
+                            </script>
+						</div>
+						<div class="col-md-8" >
+							<div style="width:100%;height: 650px;">
+								<!--添加弹幕-->
+								<div id="danmu" >
+								<div class="background-picture" style="width:100%;height:650px;background-size: 100% 100%;background-repeat: no-repeat;  background-image:url(static/img/5.jpg)"  id="ppt_hold">
+                                    <div class="col-md-6" style="width=50%;height:650px;float:left" >
+                                        <button id="pic_left" style="height:650px;width:100%;background:none;border:none;outline:none" onclick="picChangeLeft(this)"></button>
+                                    </div>
+                                    <div class="col-md-6" style="width:50%;height:650px;float:left" >
+                                        <button id="pic_right" style="height:650px;width:100%;background:none;border:none;outline:none" onclick="picChangeRight(this)"></button>
+                                    </div>
+                                </div>
+                                </div>
+                                <div style="height: 40px;line-height: 40px;text-align: center;position: absolute;top: 650px;left: 45%;">
+                                    <button style="width: 22px;height: 25px;line-height: 10px;text-align: center" onclick="picChangeLeft(this)">< </button>
+                                    <div class="ipt-box" style="display:inline-block">
+                                        <input type="text" value="1"  id="input" style="width: 41px;height: 22px;line-height: 25px;font-size: 10px;border: 1px solid #d1ded9;outline: 0px;text-align: center;margin-right: 1px;">
+                                        <span class="total_page">/</span>
+                                    </div>
+                                    <button style="width: 22px;height: 25px;line-height: 10px;text-align: center" onclick="picChangeRight(this)"> ></button>
+                                </div>
+                                <div class="text-center ctr" style="position: absolute;top:690px;margin: 5px;width: 100%;">
+                                    <button type="button"  onclick="resumer() ">开始</button>&nbsp;
+                                   <button type="button"  onclick="showBarrage() ">重放</button>
+                                    <button type="button"  onclick="pauser()">暂停</button>  &nbsp;
+                                    开关:<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'> &nbsp;
+                                    透明度:<input type="range" name="op" id="op" onchange="op()" value="50"style="width:100px;display:inline-block;vertical-align:middle;">
+                                    <select  name="color" id="color" >
+                                        <option value="white">白色</option>
+                                        <option value="red">红色</option>
+                                        <option value="green">绿色</option>
+                                        <option value="blue">蓝色</option>
+                                        <option value="yellow">黄色</option>
+                                    </select>
+                                    <select name="size" id="text_size" >
+                                        <option value="1">大文字</option>
+                                        <option value="0">小文字</option>
+                                    </select>
+                                    <select name="position" id="position"   >
+                                        <option value="0">滚动</option>
+                                        <option value="1">顶端</option>
+                                        <option value="2">底端</option>
+                                    </select>
+                                    <input type="textarea" id="text" max=300 />
+                                    <button type="button"  onclick="sendBarrage()">发送</button>
+                                </div>
+							</div>
+						</div>
+						<div class="col-md-2" style="padding-left:16px;padding-right: -10px" >
+                            <div>
+                                <h3> 弹幕列表</h3>
+                            </div>
+							<div  id="div1" style="width:100%;height:450px;background-color:white;margin-top:0px;overflow-y:auto">
+								<p id="danmu_list" style="text-align:left;	word-wrap: break-word;word-break: break-all"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div class="main" id="matter7" style="display: none">敬请期待 </div>
+	<div class="main" id="matter8" style="display: none">敬请期待</div>
+	<div class="main" id="matter9" style="display: none">敬请期待</div>
+</div>
+	<!-- END WRAPPER -->
+<!-- Javascript -->
+<script src="./assets/js/jquery/jquery.min.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<script src="./assets/js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="./assets/js/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="./assets/js/chartist/js/chartist.min.js"></script>
+<!--添加js-->
+<script src="./static/js/jquery.js"></script>
+<script src="./static/js/jquery-1.11.1.min.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+<script src='./static/js/Chart.js'></script>
+<!-- <script src='/static/js/highcharts.js'></script>有问题的引用 -->
+<!--添加老师js-->
+<script src='./assets/js/teacher.js'></script>
+<!--添加侧边栏js-->
+<script src='./assets/js/side.js'></script>
+<!--添加弹幕js-->
+
+<script src="./static/js/jquery.danmu.js"></script>
+<!--添加js结束-->
+<script>
+	//对学生名单以及未到学生名单的展示
+		var object_js;
+		var s=new Array();
+		s.push('btn-danger');
+		s.push('btn-success');
+		var allList=document.getElementById('all-list');
+		var object_no;
+		var noList=document.getElementById('no-list'); 
+		function check_stu(){
+		   $.ajax({
+			url: 'http://119.29.184.156:9000/main_page/student_connect_status/data', //在这里提填写你的地址
+			async: false,
+			dataType: 'jsonp',
+			type:'get',
+			jsonp:"callback_teacher", 
+			crossDomain: true,
+			jsonpCallback:"callback_teacher",
+			success: function (json_str) {
+				object_js = json_str;
+				showAllList();
+			}
+		});
+		}
+		
+		function showAllList(){
+			$('#all-list tr').remove();
+			var size=0,key;
+			var statuses=new Array();
+			var names=new Array();
+			for(key in object_js){
+				if(object_js.hasOwnProperty(key)){
+					names.push(key);
+					statuses.push(object_js[key]);
+					size++;
+				}
+			}
+			
+			var i=0;
+			for(i=0;i<size;){
+				var tr=document.createElement('tr');
+				do{
+					if(i>=size){
+						break;
+					}
+					var td=document.createElement('td');
+					var btn=document.createElement('a');
+					btn.innerHTML=names[i];
+					$(btn).attr('href','#');
+					$(btn).addClass('btn');
+					$(td).css('width','14.2%');
+					$(btn).css('width','100%');
+					$(btn).addClass(s[statuses[i]]);
+					td.appendChild(btn);
+					tr.appendChild(td);
+					i++;
+				}while(i%7!=0);
+				allList.appendChild(tr);
+			}
+		}
+		check_stu();
+		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		setInterval('check_stu()',3000);//6000是间隔时间  单位为毫秒 6000就是一分钟
+		function check_stu_no(){
+			$.ajax({
+				url: '',
+				async: true,
+				dataType: 'text',
+				success: function (json_str) {
+					object_no=JSON.parse(json_str);
+					showNoList();
+				}  
+			});
+		}
+		
+		function showNoList(){
+			$('#no-list tr').remove();
+			var size=0;
+			var names=new Array();
+			for(var key in object_no){
+				if(object_no.hasOwnProperty(key)){
+					names.push(key);
+					size++;
+				}
+			}
+			for(var i=0;i<size;i++){
+				var tr=document.createElement('tr');
+				var td1=document.createElement('td');
+				var td2=document.createElement('td');
+				$(tr).addClass('danger');
+				td1.innerHTML=names[i];
+				td2.innerHTML='未签到';
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				noList.appendChild(tr);
+			}
+		}
+		
+		check_stu_no()
+		setInterval('check_stu_no()',60000);
+		
+		var allRefresh=$('#all-refresh');
+		var noRefresh=$('#no-refresh');
+		allRefresh.click(function(){showAllList();});
+		noRefresh.click(function(){showNoList();});
+		//对三个图表的展示
+		//第一个图
+		var data_avg=new Array();//平均到课率
+		var data_my=new Array();//老师自己的课的到课率
+	 
+		function classPercentage_avg(){
+			var json_str='{"1":75,"2":80,"3":85,"4":89}';//这里是需要填写的json数据，格式是 "第几周":到课率
+			var json_obj=JSON.parse(json_str);
+			var data=new Array()
+			for(var i in json_obj){
+				data.push(json_obj[i]);
+			}
+			return data;
+		}
+		
+		function classPercentage_my(){
+			var json_str='{"1":80,"2":85,"3":95,"4":90}';//这里是需要填写的json数据，格式是 "第几周":到课率
+			var json_obj=JSON.parse(json_str);
+			var data=new Array()
+			for(var i in json_obj){
+				data.push(json_obj[i]);
+			}
+			return data;
+		}
+		data_avg=classPercentage_avg();
+		data_my=classPercentage_my();
+		
+		$('#chart1').highcharts({
+			title:{
+				text:"到课率"
+			},
+			xAxis: {
+				title:{
+					text:'周数'
+				},
+				categories: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
+			},
+			yAxis:{
+				title:{
+					text:'到课百分比'
+				}
+			},
+			plotOptions: {
+				series: {
+					dataLabels: {
+						enabled: true,
+						format: '{y}%',
+					}
+				}
+			},
+			series: [{
+				name:'平均到课率',
+				data: data_avg
+			},
+			{
+				name:"您的到课率",
+				data:data_my
+			}]
+		});
+		
+		//到课率较高的学生
+		var hrefs=new Array();
+		var names=new Array();
+		var all=new Array();
+		var stus_good=$('#chart2 ul.list-group li.list-group-item');
+		
+		function suggestStu(){
+			var json_str='{"小明":"./1.html","小李":"./2.html","小王":"./3.html","小吴":"./4.html","小赵":"./5.html","小黄":"./6.html","小钱":"./7.html"}';//这里是需要填写的json数据，格式是 "学生姓名":"学生主页的链接"
+			var json_obj=JSON.parse(json_str);
+			var names=new Array();
+			var hrefs=new Array();
+			for(var i in json_obj){
+				names.push(i);
+				hrefs.push(json_obj[i]);
+			}
+			return new Array(names,hrefs);
+		}
+		all=suggestStu();
+		names=all[0];
+		hrefs=all[1];
+		stus_good.html(
+			function(index,obj_j){
+				stus_good.eq(index).html("<a class='btn btn-default' style='width:100%;border-style:none;' href='"+hrefs[index]+"'><span class='glyphicon glyphicon-user pull-left'></span>"+names[index]+"</a>");
+			}
+		);     
+</script>
+
+<script type="text/javascript">
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart = echarts.init(document.getElementById('main'));
+
+                        // 指定图表的配置项和数据
+                        var option = {
+                            title: {
+                                text: '到课率'
+                            },
+                            tooltip: {},
+                            legend: {
+                                data:['以往到课率','本节到课率']
+                            },
+                            xAxis: {
+                                data: ["周一","周二","周三","周三","周四","周五"]
+                            },
+                            yAxis: {
+
+                            },
+                            series: [
+                                {
+                                name: '以往到课率',
+                                type: 'line',
+                                data: [5, 20, 36, 10, 10, 20],
+                                },
+                                {
+                                    name: '本节到课率',
+                                    type: 'line',
+                                    data: [8, 80, 36, 50, 90, 4]
+                                }]
+                        };
+                        // 使用刚指定的配置项和数据显示图表。
+                        myChart.setOption(option);
+</script>
+
+<script>
+	$(function() {
+		var data, options;
+		// headline charts
+		data = {
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+			series: [
+				[23, 29, 24, 40, 25, 24, 35],
+				[14, 25, 18, 34, 29, 38, 44],
+			]
+		};
+
+		options = {
+			height: 300,
+			showArea: true,
+			showLine: false,
+			showPoint: false,
+			fullWidth: true,
+			axisX: {
+				showGrid: false
+			},
+			lineSmooth: false,
+		};
+
+		new Chartist.Line('#headline-chart', data, options);
+		// visits trend charts
+		data = {
+			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+			series: [{
+				name: 'series-real',
+				data: [200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
+			}, {
+				name: 'series-projection',
+				data: [240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800],
+			}]
+		};
+
+		options = {
+			fullWidth: true,
+			lineSmooth: false,
+			height: "270px",
+			low: 0,
+			high: 'auto',
+			series: {
+				'series-projection': {
+					showArea: true,
+					showPoint: false,
+					showLine: false
+				},
+			},
+			axisX: {
+				showGrid: false,
+			},
+			axisY: {
+				showGrid: false,
+				onlyInteger: true,
+				offset: 0,
+			},
+			chartPadding: {
+				left: 20,
+				right: 20
+			}
+		};
+
+		new Chartist.Line('#visits-trends-chart', data, options);
+		// visits chart
+		data = {
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+			series: [
+				[6384, 6342, 5437, 2764, 3958, 5068, 7654]
+			]
+		};
+
+		options = {
+			height: 300,
+			axisX: {
+				showGrid: false
+			},
+		};
+		new Chartist.Bar('#visits-chart', data, options);
+		// real-time pie chart
+		var sysLoad = $('#system-load').easyPieChart({
+			size: 130,
+			barColor: function(percent) {
+				return "rgb(" + Math.round(200 * percent / 100) + ", " + Math.round(200 * (1.1 - percent / 100)) + ", 0)";
+			},
+			trackColor: 'rgba(245, 245, 245, 0.8)',
+			scaleColor: false,
+			lineWidth: 5,
+			lineCap: "square",
+			animate: 800
+		});
+
+		var updateInterval = 3000; // in milliseconds
+
+		setInterval(function() {
+			var randomVal;
+			randomVal = getRandomInt(0, 100);
+
+			sysLoad.data('easyPieChart').update(randomVal);
+			sysLoad.find('.percent').text(randomVal);
+		}, updateInterval);
+
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+	});
+</script>
+<！--添加弹幕-->
+<script>
+	(function(){
+	$("#danmu").danmu({
+	left:0,
+	top:0,
+	height:"100%",
+	width:"100%",
+    speed:30000,
+    opacity:1,
+    font_size_small:16,
+    font_size_big:24,
+    top_botton_danmu_time:6000
+	}
+	  );
+	})(jQuery);
+		query();
+		timedCount();
+		var first=true;
+
+	/*function timedCount() {
+	   $("#time").text($('#danmu').data("nowtime"));
+	   t=setTimeout("timedCount()",50);
+		}*/
+
+	function starter(){
+	  $('#danmu').danmu('danmu_start');
+	}
+
+	function pauser(){
+	  $('#danmu').danmu('danmu_pause');
+	}
+
+	function resumer(){
+	  $('#danmu').danmu('danmu_resume');
+	}
+	
+
+	function stoper(){
+	  $('#danmu').danmu('danmu_stop');
+	}
+
+	function getime(){
+	  alert($('#danmu').data("nowtime"));
+	}
+
+	function getpaused(){
+	  alert($('#danmu').data("paused"));
+	}
+
+	function add(){
+	var newd={"text":"new2" , "color":"green" ,"size":"1","position":"0","time":60};
+	  $('#danmu').danmu("add_danmu",newd);
+	}
+
+	function insert(){
+	  var newd= { "text":"new2" , "color":"green" ,"size":"1","position":"0","time":50};
+	  str_newd=JSON.stringify(newd);
+	  $.post("stone.php",{danmu:str_newd},function(data,status){alert(data)});
+	}
+
+	function query() {
+	  $.get("query.php",function(data,status){
+		 var danmu_from_sql=eval(data);
+		 for (var i=0;i<danmu_from_sql.length;i++){
+		  var danmu_ls=eval('('+danmu_from_sql[i]+')');
+		  $('#danmu').danmu("add_danmu",danmu_ls);
+		 }
+	  });
+	}
+
+	function ajaxSendBarrage(text,barrage_time) {
+			var file_path = $('#ppt_hold').css('background-image')
+			var splits = file_path.split('/')
+			var ppt_name = splits[splits.length-2]
+			var data = {
+			"text": text,
+			"time": barrage_time,
+			"ppt_name":ppt_name
+			}
+			$.ajax({
+			type: 'POST',
+			url: './api/ppt_barrage',
+			async: false,
+			data: data,
+			dataType: 'json',
+			});
+			}
+
+	function ajaxShowDbBarrage() {
+		var file_path = $('#ppt_hold').css('background-image');
+		var splits = file_path.split('/');
+		var ppt_name = splits[splits.length-2];
+		var data = {"ppt_name":ppt_name
+		};
+			$.ajax({
+			type: 'POST',
+			url: './api/ppt_barrage/db',
+			async: false,
+			data: data,
+			dataType: 'json',
+			success: function(data) {
+				var barrages = data['barrages'];
+				for(var barrage in barrages){
+					var barrage_text = barrages[barrage].barrage_text;
+					var barrage_time = barrages[barrage].barrage_time;
+					var oPNode = document.getElementById('danmu_list');//获取p节点的对象
+					var node = document.createElement('p');//创建一个文本节点
+					node.innerHTML = barrage_time+"&nbsp;&nbsp;&nbsp;&nbsp;"+barrage_text;//文本内容
+					oPNode.appendChild(node);//将创建的文本内容插入到p节点中,追加方式
+					showDbBarrage(barrage_text);
+				}
+			}
+			});
+
+
+	}
+
+	function sendBarrage(){
+		resumer();
+	  var text = document.getElementById('text').value;
+	  var color = document.getElementById('color').value;
+	  var position = document.getElementById('position').value;
+	  var time = $('#danmu').data("nowtime")+5;
+	  var size =document.getElementById('text_size').value;
+	  var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+'}';
+	  $.post("stone.php",{danmu:text_obj});
+	  var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+',"isnew":""}';
+	  var new_obj=eval('('+text_obj+')');
+	  $('#danmu').danmu("add_danmu",new_obj);
+	  document.getElementById('text').value='';
+	  var today=new Date();
+	  var month=today.getMonth();
+	  month=month>9?month:"0"+month;
+	  var date=today.getDate();
+	  date=date>9?date:"0"+date;
+	  var hour=today.getHours();
+	  hour=hour>9?hour:"0"+hour;
+	  var min=today.getMinutes();
+	  min=min>9?min:"0"+min;
+	  var sec=today.getSeconds();
+		sec=sec>9?sec:"0"+sec;
+	  var s=today.getFullYear()+"-"+month+"-"+date+" "+hour+":"+min+":"+sec+" ";
+
+	  ajaxSendBarrage(text,s);
+	  var oPNode = document.getElementById('danmu_list');//获取p节点的对象
+	  var node = document.createElement('p');//创建一个文本节点
+	  node.innerHTML = s+"&nbsp;&nbsp;&nbsp;&nbsp;"+text ;//文本内容
+	  oPNode.appendChild(node);//将创建的文本内容插入到p节点中,追加方式
+
+	}
+
+
+	function sc()
+	{
+	var e=document.getElementById("div1")
+	e.scrollTop=e.scrollHeight;
+	}
+	var s=setInterval("sc()",200);
+
+	function op(){
+	var op=document.getElementById('op').value;
+	 $('#danmu').data("opacity",op);
+	}
+
+	function changehide() {
+		var op = document.getElementById('op').value;
+		op = op / 100;
+		if (document.getElementById("ishide").checked) {
+			jQuery('#danmu').data("opacity", op);
+			jQuery(".flying").css({
+				"opacity": op
+			});
+		} else {
+			jQuery('#danmu').data("opacity", 0);
+			jQuery(".flying").css({
+				"opacity": 0
+			});
+		}
+	}
+
+	function settime(){
+		var t=document.getElementById("set_time").value;
+		t=parseInt(t)
+		console.log(t)
+		$('#danmu').data("nowtime",t);
+	}
+</script>
+
+<script>
+    var folds_size = 0;
+    /*
+    PPT页数向左翻页
+     */
+
+	function picChangeLeft(which) {
+		var ppt_hold = document.getElementById('ppt_hold');
+		var title = ppt_hold.getAttribute('title');
+		var pic_num = parseInt(title);
+		if(pic_num - 1 < 0){
+			pic_num = 0;
+		}
+		else{
+			pic_num -= 1;
+		}
+		ppt_hold.setAttribute('title',pic_num.toString());
+		var url_path = $('#ppt_hold').css('background-image');
+		var oppo_path = url_path.match('ppt_barrage/(.*?)"')[1];
+		oppo_path = oppo_path.replace(/[0-9]\d*.jpg/,pic_num.toString() + '.jpg');
+		var command = './' + oppo_path;
+		command = 'url("' + command + '")';
+		$('#ppt_hold').css('background-image',command);
+		var input=document.getElementById("input");
+		input.value=pic_num + 1;
+	}
+		/*
+		PPT页数向右翻页
+		 */
+	function picChangeRight(which) {
+
+
+		var ppt_hold = document.getElementById('ppt_hold');
+		var title = ppt_hold.getAttribute('title');
+		var pic_num = parseInt(title);
+		if(pic_num + 1 >= folds_size){
+			pic_num = folds_size-1;
+		}
+		else{
+			pic_num +=1 ;
+		}
+
+		ppt_hold.setAttribute('title',pic_num.toString());
+		var url_path = $('#ppt_hold').css('background-image');
+		var oppo_path = url_path.match('ppt_barrage/(.*?)"')[1];
+		oppo_path = oppo_path.replace(/[0-9]\d*.jpg/,pic_num.toString() + '.jpg');
+		var command = './' + oppo_path;
+		command = 'url("' + command + '")';
+		$('#ppt_hold').css('background-image',command);
+		var input=document.getElementById("input");
+		input.value=pic_num + 1;
+	}
+
+			var path;
+			var files_number;
+			var obj_data;
+			function ajaxTest(filename) {
+				var data = {
+				"filename": filename
+				}
+			$.ajax({
+			type: 'POST',
+			url: './api/info_file',
+			async: false,
+			data: data,
+			dataType: 'json',
+			success: function(data) {
+				obj_data = data
+			}
+			});
+			}
+				var filename_and_number = {};
+				var ppt_catalog_num = 1;
+				var ppt_catalog_total ;
+				var ppt_catalog = document.getElementById('a');
+				var folds = {{ folds|safe }};
+				if (folds.length%5==0){
+					ppt_catalog_total = folds.length/5;
+				}
+				else{
+					ppt_catalog_total = Math.floor(folds.length/5) + 1;
+				}
+				var ul_array = [];
+				var result = [];
+				for(var i=0,len=folds.length;i<len;i+=5){
+					result.push(folds.slice(i,i+5));
+				}
+				for (var i = 0 ; i < result.length;i++){
+					var div_list = document.createElement('div');
+					for ( var j = 0 ; j < result[i].length;j++){
+						var the_p = document.createElement('button');
+						var text = document.createTextNode(result[i][j].toString());
+						ajaxTest(result[i][j].toString());
+						path = obj_data['path']
+						files_number = obj_data['number']
+						var file_name = obj_data['filename']
+						filename_and_number[file_name] = obj_data[file_name]
+						the_p.setAttribute('href',path);
+						the_p.setAttribute("style","width:100%;border:0;height:50px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap");
+						the_p.onclick = function (){
+							choosePPT(this);
+						};
+						the_p.appendChild(text);
+						div_list.appendChild(the_p);
+					}
+					ul_array.push(div_list);
+				}
+				ppt_catalog.appendChild(ul_array[1]);
+</script>
+
+<script>
+
+	 function choosePPT(which) {
+		 var file_path = which.getAttribute('href');
+		 var splits = file_path.split('/');
+		 var filename = splits[splits.length-1];
+		 folds_size = filename_and_number[filename];
+		 var set_path = file_path.toString() + '/0.jpg';
+		 var command = 'url(' + set_path + ')';
+		 $('#ppt_hold').css('background-image',command);
+		 var ppt_hold = document.getElementById('ppt_hold');
+		 ppt_hold.setAttribute('title','0');
+		 $('#danmu_list').empty();
+		 ajaxShowDbBarrage();
+		 $('.total_page').html("/"+folds_size);
+		 var input=document.getElementById("input");
+		input.value=1;
+	 }
+	 function showDbBarrage(barrage_text){
+		var text = barrage_text;
+		var color = document.getElementById('color').value;
+		var position = document.getElementById('position').value;
+		var time = $('#danmu').data("nowtime")+5;
+		var size =document.getElementById('text_size').value;
+		var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+'}';
+		var text_obj='{ "text":"'+text+'","color":"'+color+'","size":"'+size+'","position":"'+position+'","time":'+time+',"isnew":""}';
+		var new_obj=eval('('+text_obj+')');
+		$('#danmu').danmu("add_danmu",new_obj);
+	 }
+
+	 function showBarrage() {
+		 $('#danmu_list').empty();
+		 ajaxShowDbBarrage();
+	 }
+
+	 function foldAdd() {
+			if (ppt_catalog_num + 1 == ppt_catalog_total){
+				ppt_catalog_num = ppt_catalog_num;
+			}
+			else{
+				ppt_catalog_num += 1;
+			}
+			var a = document.getElementById('a');
+			$('#a').empty();
+			a.appendChild(ul_array[ppt_catalog_num]);
+			var btn=document.getElementByTagName('button');
+
+		}
+		foldSub();
+	function foldSub() {
+		if (ppt_catalog_num - 1 < 0){
+			ppt_catalog_num = ppt_catalog_num;
+		}
+		else{
+			ppt_catalog_num -= 1;
+		}
+		var a = document.getElementById('a');
+		$('#a').empty()
+		a.appendChild(ul_array[ppt_catalog_num]);
+	}
+</script>
+</body>
+</html>

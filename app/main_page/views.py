@@ -53,7 +53,7 @@ def get_class_num():
 @main_page_Blueprint.route('/')
 def main_page():
     Class = BaseClass(class_number)
-    return render_template('index.html', Class=Class)
+    return render_template('wa_admin.html', Class=Class)
 
 
 @main_page_Blueprint.route('/student/<username>')

@@ -1,0 +1,11 @@
+body{
+
+    /*overflow:auto;
+    background-size:cover;*/
+    position:relative;
+}
+
+.nav-stacked.nav ul li a{
+    width:100%;
+}
+
