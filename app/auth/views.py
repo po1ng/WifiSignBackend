@@ -8,11 +8,12 @@ from flask_login import current_user
 from flask_login import login_user
 from flask_login import logout_user
 from flask_login import login_required
-from app.utils import response_dict
+from app.utils import response_dict,get_class_num, get_date
 from app.models.BaseUser import User
-from app.models.UserTemp import UserTemp
-from app.constants import EMAIL_USED, NICKNAME_USED, SUCCESS, FORM_INVALID, LOGIN_FAIL, constants
+from app.constants import EMAIL_USED, NICKNAME_USED, SUCCESS, FORM_INVALID, LOGIN_FAIL,\
+                          constants, CLASS_ID_LIST
 from . import auth as auth_Blueprint
+from app.models.StudentInfo import StudentInfo
 
 
 
@@ -21,10 +22,20 @@ def before_request():
     if current_user.is_authenticated:
         current_user.ping()
 
-
+# 登录之前先把所有的状态先刷新
 @auth_Blueprint.route('/')
 @login_required
 def index():
+    class_info = get_class_num()
+    class_id_list = CLASS_ID_LIST
+    today_date = get_date()
+    for class_id in class_id_list:
+        if StudentInfo.objects(class_id=class_id, class_num=class_info['class_num'], date=today_date):
+            students_info = StudentInfo.objects(class_id=class_id, class_num=class_info['class_num'], date=today_date)
+            for student_info in students_info:
+                student_info['status'] = '0'
+                student_info.save()
+
     return render_template('index.html')
 
 
