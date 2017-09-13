@@ -29,6 +29,7 @@ $(document).ready(function() {
         openMatter(9);
     });
 	$("#li-ten").click(function () {
+		upDate();
         openMatter(10);
     });
    
@@ -44,3 +45,21 @@ $(document).ready(function() {
         }
     }
 });
+function upDate(){
+	
+	$.ajax({
+		url: 'http://119.29.184.156:9000/auth/reflash', //在这里提填写你的地址
+		async: false,
+		dataType: 'jsonp',
+		data:{'upDate':"success"},
+		type:'get',
+		jsonp:"callback_upDate", 
+		crossDomain: true,
+		jsonpCallback:"callback_upDate",
+		success: function (json_str) {
+			
+		}
+	});
+}
+
+	
