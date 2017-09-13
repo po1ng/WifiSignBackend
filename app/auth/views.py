@@ -23,20 +23,20 @@ def before_request():
         current_user.ping()
 
 # 登录之前先把所有的状态先刷新
-@auth_Blueprint.route('/')
+@auth_Blueprint.route('/reflash')
 @login_required
 def index():
-    # class_info = get_class_num()
-    # class_id_list = CLASS_ID_LIST
-    # today_date = get_date()
-    # for class_id in class_id_list:
-    #     if StudentInfo.objects(class_id=class_id, class_num=class_info['class_num'], date=today_date):
-    #         students_info = StudentInfo.objects(class_id=class_id, class_num=class_info['class_num'], date=today_date)
-    #         for student_info in students_info:
-    #             student_info['status'] = '0'
-    #             student_info.save()
+    class_info = get_class_num()
+    class_id_list = CLASS_ID_LIST
+    today_date = get_date()
+    for class_id in class_id_list:
+        if StudentInfo.objects(class_id=class_id, class_num=class_info['class_num'], date=today_date):
+            students_info = StudentInfo.objects(class_id=class_id, class_num=class_info['class_num'], date=today_date)
+            for student_info in students_info:
+                student_info['status'] = '0'
+                student_info.save()
 
-    return render_template('index.html')
+    jsonify({'status': 'ok'})
 
 
 @auth_Blueprint.route('/register', methods=['GET', 'POST'])
