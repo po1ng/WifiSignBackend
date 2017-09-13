@@ -23,7 +23,7 @@ def before_request():
         current_user.ping()
 
 # 登录之前先把所有的状态先刷新
-@auth_Blueprint.route('/reflash')
+@auth_Blueprint.route('/')
 @login_required
 def index():
     return render_template('index.html')
