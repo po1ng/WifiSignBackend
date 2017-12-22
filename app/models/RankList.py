@@ -1,15 +1,16 @@
 from app.models.MongodbConn import MongoPipeline
 
-class RankList():
 
-    def __init__(self,date,class_id,class_num):
-        self.rank_day_time = self.day_class_time(date,class_id,class_num)
+class RankList(object):
+
+    def __init__(self, date, class_id, class_num):
+        self.rank_day_time = self.day_class_time(date, class_id, class_num)
 
     # date，日期;class_id，班级序号;class_num，课程编号
-    def day_class_time(self,date,class_id,class_num):
+    def day_class_time(self, date, class_id, class_num):
         conn = MongoPipeline()
         conn.open_connection('qiandao_last_info')
-        students_info = conn.getIds('info',{'date':date,'class_id':class_id,
+        students_info = conn.getIds('info', {'date':date, 'class_id':class_id,
                                             'class_num':class_num})
         students_time = {}
         for student in students_info:
@@ -17,18 +18,18 @@ class RankList():
             connect_time = student['connect_time']
             students_time[name] = connect_time
 
-        sort_students_time = sorted(students_time.items(),key=lambda b:b[1],reverse=True)
+        sort_students_time = sorted(students_time.items(),
+                                    key=lambda b:b[1],
+                                    reverse=True)
         rank_students_time = {}
-        for i,e in enumerate(sort_students_time):
+        for i, e in enumerate(sort_students_time):
             if i == 10:
                 break
             rank_students_time[e[0]] = e[1]
 
-        sort_rank_students = sorted(rank_students_time.items(),key= lambda b:b[1],
+        sort_rank_students = sorted(rank_students_time.items(),
+                                    key=lambda b:b[1],
                                     reverse=True)
         return sort_rank_students
 
-if __name__ == '__main__':
-    day = RankList('2017-05-20',21,5)
-    print(day.rank_day_time)
 

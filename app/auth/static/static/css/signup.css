@@ -1,0 +1,39 @@
+body{
+    background-image: url(../picture/signup_back.jpg);
+    background-color:;
+    overflow:hidden;
+    background-size:cover;
+    font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.log{
+    position:relative;
+    left:30%;
+    width:40%;
+    height:100%;
+}
+
+.form{
+    background-color:;
+    position:relative;
+    left:0;
+    top:30%;
+    height:70%;
+    width:100%;
+}
+
+.input{
+    position:relative;
+    width:80%;
+    height:10%;
+    left:10%;
+    margin-top:10%;
+}
+
+.button{
+    position:relative;
+    width:40%;
+    left:30%;
+    height:15%;
+    margin-top:10%;
+}

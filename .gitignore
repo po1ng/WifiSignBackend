@@ -105,3 +105,4 @@ ENV/
 *.pptx
 *.pdf
 *-pic
+app/ppt_barrage/static/doc/
